@@ -63,7 +63,7 @@ const List = React.createClass({
                             return <div className="row list">
                                 <ul className="col-xs-6 text-center">{item.time}</ul>
                                 <div className="col-xs-6 text-center ">
-                                    <ReactRouter.Link to='/success'>
+                                    <ReactRouter.Link to='/second'>
                                         <button className=" btn btn-info">预约</button>
                                     </ReactRouter.Link>
                                 </div>
@@ -79,9 +79,7 @@ const List = React.createClass({
 });
 
 ReactDOM.render(
-    <ReactRouter.Router>
-        <ReactRouter.Route path="/" component={App}/>
-    </ReactRouter.Router>
+    <App/>
     , document.body);
 
 
