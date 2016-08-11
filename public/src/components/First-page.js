@@ -1,3 +1,6 @@
+'use strict';
+import Second from "./Second-page";
+
 const App = React.createClass({
 
     getInitialState:function () {
@@ -48,8 +51,9 @@ const List = React.createClass({
                return  <div className="row my-top my-padding  my-write">
                     <div className="col-xs-6 text-center">{JSON.stringify(data._id)}</div>
                     <div className="col-xs-6 text-center">
-                        <ReactRouter.Link to="test">
-                        <button className="btn btn-info" disabled={data.room.every(item=>{return item.state === 1})?"true":""} onClick={this.toggle.bind(this,data._id) }>可预约</button>
+                        <ReactRouter.Link to="/second">
+                        <button className="btn btn-info" disabled={data.room.every(item=>{return item.state === 1})?"true":""}
+                                onClick={this.toggle.bind(this,data._id) }>可预约</button>
                             </ReactRouter.Link>
                     </div>
                 </div>
@@ -59,16 +63,11 @@ const List = React.createClass({
     }
 });
 
-const Test = React.createClass({
-    render:function(){
-        return <div>test</div>
-    }
-});
 
 ReactDOM.render(
-    <ReactRouter.Router>
-        <ReactRouter.Route path="/" component={App}>
+    <ReactRouter.Router >
+        <ReactRouter.Route path="/" component = {App}>
+            <ReactRouter.Route path="/second" component = {Second}/>
         </ReactRouter.Route>
-        <ReactRouter.Route path="/test" component={Test}>
-        </ReactRouter.Route>
-    </ReactRouter.Router>, document.body);
+    </ReactRouter.Router>
+    , document.body);
