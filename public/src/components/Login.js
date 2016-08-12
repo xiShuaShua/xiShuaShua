@@ -1,4 +1,3 @@
-// import First from "./First-page";
 'use strict';
 const Login = React.createClass({
     render: function () {
@@ -13,11 +12,13 @@ const Login = React.createClass({
 
 const Title = React.createClass({
     render: function () {
-        return <div className="row btn-info my-bg">
+        return <div className="row my-nav my-bg">
             <ul className="nav">
                 <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
                 <li className="col-xs-4 text-center">登录</li>
+                <ReactRouter.Link to="register">
                 <li className="col-xs-4 text-right">注册</li>
+                    </ReactRouter.Link>
             </ul>
         </div>
     }
@@ -84,9 +85,9 @@ const Bottom = React.createClass({
                 <input type="password" placeholder="密码" required="" id="password"/>
             </div>
             <div className="col-xs-offset-3">
-                {/*<ReactRouter.Link to="test">*/}
+                <ReactRouter.Link to="first">
                 <input type="submit" value="登录"/>
-                    {/*</ReactRouter.Link>*/}
+                    </ReactRouter.Link>
             </div>
             <br/>
             <br/>
@@ -96,6 +97,4 @@ const Bottom = React.createClass({
         </div>
     }
 });
-
-ReactDOM.render(
-   <Login/>, document.body);
+export default Login;

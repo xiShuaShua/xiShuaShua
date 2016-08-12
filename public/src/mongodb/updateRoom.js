@@ -1,27 +1,50 @@
 var MongoClient = require('mongodb').MongoClient;
 var DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
 
-var updateData = function (db, callback) {
+var updateData = function (db, element, item, index, callback) {
+
     var collection = db.collection('room');
+    var whereStr = {"_id": parseInt(element._id)};
 
-    var whereStr = {"_id": 2};
-    var updateStr = {$set: {"20:00~21:00" : 1 }};
-    collection.updateMany(whereStr, updateStr, {safe:true},function (err, result) {
-        if (err) {
-            console.log('Error' + err);
-            return;
+
+    element.room.map(temp=> {
+        if (temp.time === item.time) {
+            var updateStr = {
+                $set: {
+                    "room": [
+                        (index === 0) ? {"time": item.time, "state": "1"} : element.room[0],
+                        (index === 1) ? {"time": item.time, "state": "1"} : element.room[1],
+                        (index === 2)? {"time": item.time, "state": "1"}: element.room[2],
+                        (index === 3)? {"time": item.time, "state": "1"} : element.room[3],
+                        (index === 4)? {"time": item.time, "state": "1"} : element.room[4],
+                    ]
+                }
+
+
+            };
+            collection.updateMany(whereStr, updateStr, {safe: true}, function (err, result) {
+                if (err) {
+                    console.log('Error' + err);
+                    return;
+                }
+                callback(result);
+            });
+
         }
-        callback(result);
-    });
-}
+        return;
+    })
+};
+exports.update = function (req, res) {
+    MongoClient.connect(DB_CONN_STR, function (err, db) {
+        const element = req.body.element;
+        const item = req.body.item;
+        const index = parseInt(req.body.index);
+        console.log(index);
 
-MongoClient.connect(DB_CONN_STR, function (err, db) {
-    console.log("\n" + "******connect succeed*******" + "\n");
-    updateData(db, function (result) {
-        console.log("\n" + "update succeed" + "\n");
-        console.log(result);
+        updateData(db, element, item, index, function (result) {
+            console.log(result);
 
-        db.close();
+            db.close();
+        });
     });
-});
-module.exports = updateData;
+};
