@@ -46,19 +46,19 @@ const Top = React.createClass({
 
             <div className="carousel-inner" role="listbox">
                 <div className="item active img-rounded">
-                    <img src="../img/2.jpg" alt="..."/>
+                    <img src="src/img/2.jpg" alt="..."/>
                 </div>
                 <div className="item img-rounded">
-                    <img src="../img/10.png"/>
+                    <img src="src/img/10.png"/>
                 </div>
                 <div className="item img-rounded">
-                    <img src="../img/3.jpg" alt="..."/>
+                    <img src="src/img/3.jpg" alt="..."/>
                 </div>
                 <div className="item img-rounded">
-                    <img src="../img/6.png" alt="..."/>
+                    <img src="src/img/6.jpg" alt="..."/>
                 </div>
                 <div className="item img-rounded">
-                    <img src="../img/11.png" alt="..."/>
+                    <img src="src/img/11.png" alt="..."/>
                 </div>
             </div>
 
@@ -76,7 +76,7 @@ const Top = React.createClass({
 
 const Bottom = React.createClass({
     render: function () {
-        return <div className="content design">
+        return <div className="design" id="content">
             <div className="col-xs-offset-2">
                 <input type="text" placeholder="用户名" required="" id="username"/>
             </div>
@@ -84,9 +84,9 @@ const Bottom = React.createClass({
                 <input type="password" placeholder="密码" required="" id="password"/>
             </div>
             <div className="col-xs-offset-3">
-                <ReactRouter.Link to="test">
+                {/*<ReactRouter.Link to="test">*/}
                 <input type="submit" value="登录"/>
-                    </ReactRouter.Link>
+                    {/*</ReactRouter.Link>*/}
             </div>
             <br/>
             <br/>
