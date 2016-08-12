@@ -27,7 +27,7 @@ const First = React.createClass({
 
 const Nav = React.createClass({
     render: function() {
-        return <div className="row my-nav my-bg">
+        return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
                 <ReactRouter.Link to="login">
                     <li className="col-xs-4 my-white-color"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
@@ -40,7 +40,14 @@ const Nav = React.createClass({
 });
 
 const List = React.createClass({
-
+    getInitialState: function () {
+        return {
+            myDate :''
+        }
+    },
+    componentDidMount:function () {
+        this.setState({myDate: new Date()})
+    },
     toggle:function (id) {
         this.props.getId(id);
     },
@@ -56,7 +63,10 @@ const List = React.createClass({
                     <div className="col-xs-6 text-center">{JSON.stringify(data._id)}</div>
                     <div className="col-xs-6 text-center">
                         <ReactRouter.Link to="/second">
-                        <button className="btn btn-info" disabled={data.room.every(item=>{return item.state === 1})?"true":""}
+                        <button className="btn btn-info" disabled={data.room.every(item=>{
+                            const theTime = item.time.split(':');
+
+                            return (item.state === 1 || parseInt(theTime[0]) < this.state.myDate)})?"true":""}
                                 onClick={this.toggle.bind(this,data._id) }>可预约</button>
                             </ReactRouter.Link>
                     </div>

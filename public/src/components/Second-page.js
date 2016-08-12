@@ -25,7 +25,7 @@ const Second = React.createClass({
 
 const Header = React.createClass({
     render: function () {
-        return <div className="row btn-info my-bg">
+        return <div className="row btn-info my-bg my-white-color">
             <ul className="nav">
                 <ReactRouter.Link to="/first">
                 <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>

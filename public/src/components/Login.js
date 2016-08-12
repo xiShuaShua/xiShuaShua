@@ -12,7 +12,7 @@ const Login = React.createClass({
 
 const Title = React.createClass({
     render: function () {
-        return <div className="row my-nav my-bg">
+        return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
                 <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
                 <li className="col-xs-4 text-center">登录</li>
