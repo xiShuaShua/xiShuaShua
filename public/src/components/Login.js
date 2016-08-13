@@ -14,7 +14,9 @@ const Title = React.createClass({
     render: function () {
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
-                <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
+                <ReactRouter.Link to="/home">
+                    <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
+                </ReactRouter.Link>
                 <li className="col-xs-4 text-center">登录</li>
                 <ReactRouter.Link to="register">
                 <li className="col-xs-4 text-right">注册</li>

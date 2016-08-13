@@ -24,10 +24,14 @@ const selectData = require('./public/src/mongodb/selectRoom');
 const updateData = require('./public/src/mongodb/updateRoom');
 const insertUser = require('./public/src/userINfoMongodb/insertUser');
 
+
 app.post('/insertRoom',insertData.save);
 app.get('/selectRooms',selectData.findAll);
 app.post('/updateRoom', updateData.update);
 
+app.get('/selectRooms',selectData.findAll);
+app.post('/insertRoom',insertData.save);
+app.post('/updateRoom',updateData.update);
 app.post('/insertUser', insertUser.insertUser);
 
 app.listen(8080, function() {
