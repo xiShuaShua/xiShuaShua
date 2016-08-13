@@ -3,39 +3,46 @@ const Best = React.createClass({
 
     getInitialState: function () {
         return {
-            room: [],
             canRecommends: [],
             recommendRooms: [],
             recommendTimes: [],
         }
     },
     componentDidMount: function () {
-        console.log('componentDidMount')
+        if(this.isMounted()){
+
+
         $.get('/selectRooms', (result)=> {
-            console.log('selectRooms', result)
             const comp = this;
-            this.setState({room: result}, function() {
-                comp.toggle();
-            });
-        })
+            this.toggle(result);
+
+        })}
+
     },
-//jhhjh
-    toggle: function () {
-        console.log("componentWillUpdate", this.state.room);
-        const rooms = this.state.room;
+
+    toggle: function (result) {
+        const rooms = result;
+        const myDate = new Date();
+        const myTime = myDate.getHours();
+
         for (let i = 0; i < rooms.length; i++) {
             let tag = 0;
             for (let j = 0; j < rooms[i].room.length; j++) {
-                if (rooms[i].room[j].state === "0" && tag === 0) {
+                if (rooms[i].room[j].state === "0" && tag === 0&& myTime<parseInt(rooms[i].room[j].time.split(":")[0])) {
                     this.state.canRecommends.push({id: rooms[i]._id, time: rooms[i].room[j].time});
+                    this.setState({canRecommends:this.state.canRecommends})
                     tag = 1;
                 }
             }
         }
+
+
         const canRecommends = this.state.canRecommends;
         for (let i = 0; i < canRecommends.length; i++) {
             this.state.recommendTimes.push(parseInt(canRecommends[i].time.split(":")[0]));
+            this.setState({recommendTimes:this.state.recommendTimes});
             this.state.recommendRooms.push(canRecommends[i].id);
+            this.setState({recommendRooms:this.state.recommendRooms})
 
         }
         for (let i = this.state.recommendTimes.length - 1; i > 0; i--) {
@@ -45,7 +52,6 @@ const Best = React.createClass({
             }
         }
     },
-    //kjlkjkl
 
     render: function () {
 
@@ -62,16 +68,14 @@ const Header = React.createClass({
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
                 <ReactRouter.Link to="second">
-                <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
-                    </ReactRouter.Link>
+                    <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
+                </ReactRouter.Link>
                 <li className="col-xs-4 text-center">最佳推荐</li>
                 <li className="col-xs-4 text-right"><span className="glyphicon glyphicon-heart">收藏</span></li>
             </ul>
         </div>
     }
 });
-//23
-
 const Room = React.createClass({
     render: function () {
         return <div>
