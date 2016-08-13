@@ -34,10 +34,8 @@ exports.update = function (req, res) {
         const element = req.body.element;
         const item = req.body.item;
         const index = parseInt(req.body.index);
-        console.log(index);
 
         updateData(db, element, item, index, function (result) {
-            console.log(result);
             db.close();
         });
     });

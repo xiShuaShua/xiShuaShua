@@ -29,7 +29,7 @@ const Nav = React.createClass({
     render: function() {
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
-                <ReactRouter.Link to="login">
+                <ReactRouter.Link to="/">
                     <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
                 </ReactRouter.Link>
                 <li className="col-xs-4 text-center">洗刷刷</li>
@@ -65,9 +65,7 @@ const List = React.createClass({
                         <ReactRouter.Link to="/second">
                         <button className="btn btn-info" disabled={data.room.every(item=>{
                             const theTime = item.time.split(':');
-
-                            console.log(this.state.myDate);
-                            return (item.state == 1 || parseInt(theTime[0]) < this.state.myDate)})?"true":""}
+                            return (item.state == 1 || parseInt(theTime[0]) <= this.state.myDate)})?"true":""}
                                 onClick={this.toggle.bind(this,data._id) }>可预约</button>
                             </ReactRouter.Link>
                     </div>
