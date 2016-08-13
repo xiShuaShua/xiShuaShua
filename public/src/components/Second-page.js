@@ -3,8 +3,12 @@ const Second = React.createClass({
     getInitialState: function () {
         return {
             room: [],
-            id:this.props.id,
+            id: this.props.id,
         }
+    },
+
+    getTime: function (time) {
+        this.props.onGetTime(time);
     },
 
     componentDidMount: function () {
@@ -16,9 +20,9 @@ const Second = React.createClass({
 
     render: function () {
         return <div>
-            <Header id = {this.state.id}/>
+            <Header id={this.state.id}/>
             <Middle/>
-            <List elements={this.state.room} id = {this.state.id}/>
+            <List elements={this.state.room} onGetTime={this.getTime} id={this.state.id}/>
         </div>
     }
 });
@@ -28,8 +32,8 @@ const Header = React.createClass({
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
                 <ReactRouter.Link to="/first">
-                <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
-                    </ReactRouter.Link>
+                    <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
+                </ReactRouter.Link>
                 <li className="col-xs-4 text-center">{this.props.id}号房</li>
                 <li className="col-xs-4 text-right"><span className="glyphicon glyphicon-heart">收藏</span></li>
             </ul>
@@ -50,9 +54,11 @@ const Middle = React.createClass({
 
 const List = React.createClass({
 
-    update: function (element,item) {
+
+    update: function (element, item) {
+        this.props.onGetTime(item.time);
         const index = element.room.indexOf(item);
-        $.post('/updateRoom', ({element,item,index}));
+        $.post('/updateRoom', ({element, item, index}));
     },
 
     render: function () {
@@ -71,8 +77,10 @@ const List = React.createClass({
                             return <div className="row list">
                                 <ul className="col-xs-6 text-center">{item.time}</ul>
                                 <div className="col-xs-6 text-center ">
-                                    <ReactRouter.Link to='/best'>
-                                        <button onClick={this.update.bind(this,element,item)} className=" btn btn-info">预约</button>
+                                    <ReactRouter.Link to='/success'>
+                                        <button onClick={this.update.bind(this, element, item)}
+                                                className=" btn btn-info">预约
+                                        </button>
                                     </ReactRouter.Link>
                                 </div>
                             </div>

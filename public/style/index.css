@@ -311,4 +311,18 @@
     display: block;
 }
 
+.success h3{
+    color:#00b3ee;
+    margin-top: 50px;
+}
+
+.send{
+    margin-top: 50px;
+    font-size: 1.4em;
+    color: #31b0d5;
+}
+
+.time{
+    margin-top: 40px;
+}
 
