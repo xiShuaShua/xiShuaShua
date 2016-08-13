@@ -61,7 +61,7 @@ const Header = React.createClass({
     render: function () {
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
-                <ReactRouter.Link to="second">
+                <ReactRouter.Link to="/">
                 <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
                     </ReactRouter.Link>
                 <li className="col-xs-4 text-center">最佳推荐</li>

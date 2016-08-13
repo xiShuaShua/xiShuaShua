@@ -71,7 +71,7 @@ const List = React.createClass({
                             return <div className="row list">
                                 <ul className="col-xs-6 text-center">{item.time}</ul>
                                 <div className="col-xs-6 text-center ">
-                                    <ReactRouter.Link to='/best'>
+                                    <ReactRouter.Link to='/success'>
                                         <button onClick={this.update.bind(this,element,item)} className=" btn btn-info">预约</button>
                                     </ReactRouter.Link>
                                 </div>
