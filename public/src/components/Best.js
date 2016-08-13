@@ -99,7 +99,7 @@ const Button = React.createClass({
     render: function () {
         return <div className="col-md-6 ">
             <center>
-                <button className="hu-button btn-lg  btn-info">预约</button>
+                <button className="btn hu-button btn-lg  btn-info">预约</button>
             </center>
         </div>
 
