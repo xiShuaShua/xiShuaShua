@@ -21,11 +21,12 @@ app.use(express.static('public'));
 
 const insertData = require('./public/src/mongodb/insertRoom');
 const selectData = require('./public/src/mongodb/selectRoom');
-
-app.post('/insertRoom',insertData.save);
+const updateData = require('./public/src/mongodb/updateRoom');
+const insertUser = require('./public/src/userINfoMongodb/insertUser');
 
 app.get('/selectRooms',selectData.findAll);
-const insertUser = require('./public/src/userINfoMongodb/insertUser');
+app.post('/insertRoom',insertData.save);
+app.post('/updateRoom',updateData.update)
 app.post('/insertUser', insertUser.insertUser);
 
 app.listen(8080, function() {
