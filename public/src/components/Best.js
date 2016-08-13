@@ -1,6 +1,5 @@
 'use strict';
 const Best = React.createClass({
-
     getInitialState: function () {
         return {
             canRecommends: [],
@@ -8,16 +7,12 @@ const Best = React.createClass({
             recommendTimes: [],
         }
     },
+
     componentDidMount: function () {
         if(this.isMounted()){
-
-
         $.get('/selectRooms', (result)=> {
-            const comp = this;
             this.toggle(result);
-
         })}
-
     },
 
     toggle: function (result) {
@@ -36,14 +31,12 @@ const Best = React.createClass({
             }
         }
 
-
         const canRecommends = this.state.canRecommends;
         for (let i = 0; i < canRecommends.length; i++) {
             this.state.recommendTimes.push(parseInt(canRecommends[i].time.split(":")[0]));
             this.setState({recommendTimes:this.state.recommendTimes});
             this.state.recommendRooms.push(canRecommends[i].id);
             this.setState({recommendRooms:this.state.recommendRooms})
-
         }
         for (let i = this.state.recommendTimes.length - 1; i > 0; i--) {
             if (this.state.recommendTimes[i] < this.state.recommendTimes[i - 1]) {
@@ -106,7 +99,6 @@ const Button = React.createClass({
                 <button className="btn hu-button btn-lg  btn-info">预约</button>
             </center>
         </div>
-
     }
 });
 
