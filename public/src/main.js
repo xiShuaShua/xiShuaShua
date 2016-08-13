@@ -4,13 +4,11 @@ import Second from "./components/Second-page";
 import Best from "./components/Best";
 import Register from "./components/Register";
 import App from "./components/App";
-import Home from "./components/Home";
 
 ReactDOM.render(
     <ReactRouter.Router>
         <ReactRouter.Route path="/" component = {App}>
-            {/*<ReactRouter.IndexRoute component = {Login}/>*/}
-            <ReactRouter.IndexRoute component = {Home}/>
+            <ReactRouter.IndexRoute component = {Login}/>
             <ReactRouter.Route path="/first" component = {First}/>
             <ReactRouter.Route path="/second" component = {Second}/>
             <ReactRouter.Route path="/login" component = {Login}/>

@@ -25,7 +25,7 @@ const Second = React.createClass({
 
 const Header = React.createClass({
     render: function () {
-        return <div className="row my-nav my-bg my-white-color">
+        return <div className="row btn-info my-bg my-white-color">
             <ul className="nav">
                 <ReactRouter.Link to="/first">
                 <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
@@ -71,7 +71,7 @@ const List = React.createClass({
                             return <div className="row list">
                                 <ul className="col-xs-6 text-center">{item.time}</ul>
                                 <div className="col-xs-6 text-center ">
-                                    <ReactRouter.Link to='/success'>
+                                    <ReactRouter.Link to='/best'>
                                         <button onClick={this.update.bind(this,element,item)} className=" btn btn-info">预约</button>
                                     </ReactRouter.Link>
                                 </div>
