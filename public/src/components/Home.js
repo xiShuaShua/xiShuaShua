@@ -111,4 +111,4 @@ const Body = React.createClass({
     }
 });
 
-export default Home;
+export default Home
