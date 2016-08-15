@@ -30,7 +30,7 @@ const Nav = React.createClass({
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
 
-                <ReactRouter.Link to="login">
+                <ReactRouter.Link to="second">
                     <li className="col-xs-4 my-white-color"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
                 </ReactRouter.Link>
                 <li className="col-xs-4 text-center">洗刷刷</li>

@@ -12,7 +12,7 @@ ReactDOM.render(
     <ReactRouter.Router>
         <ReactRouter.Route path="/" component={App}>
             <ReactRouter.IndexRoute component={Home}/>
-        
+
             <ReactRouter.Route path="/first" component={First}/>
             <ReactRouter.Route path="/second" component={Second}/>
             <ReactRouter.Route path="/login" component={Login}/>
