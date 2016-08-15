@@ -9,8 +9,26 @@ const SighUp = React.createClass({
         let username = $("input[name=username]").val();
         let password = $("input[name=password]").val();
         let surepassword = $("input[name=password-sure]").val();
-        if (surepassword === password) {
-            $.post('/insertUser', {name: username, password});
+        if(username === ''){
+            alert("用户名不能为空，请输入用户名")
+        }
+        else if(password===''){
+            alert("密码不能为空，请输入密码")
+        }
+        else  if(surepassword === ''){
+            alert("密码不能为空，请输入密码")
+        }
+        else if(surepassword === password) {
+            $.post('/selectUser',{"name":username},(data)=>{
+                if(data.length === 0){
+                    $.post('/insertUser', {name: username, password},(data)=>{
+                        alert("注册成功")
+                    });
+                }
+                else{
+                    alert('该用户已存在，请重新输入')
+                }
+            });
         }
         else {
             alert("两次输入密码不相同，请重新输入");
@@ -20,6 +38,7 @@ const SighUp = React.createClass({
     render: function () {
         return <div>
             <Title/>
+            <Top/>
             <Bottom target={this.target}/>
         </div>
     }
@@ -30,10 +49,18 @@ const Title = React.createClass({
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
                 <ReactRouter.Link to="/login">
-                    <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
-                </ReactRouter.Link>
+                <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
+                    </ReactRouter.Link>
                 <li className="col-xs-4 text-center">注册</li>
             </ul>
+        </div>
+    }
+});
+
+const Top = React.createClass({
+    render: function () {
+        return <div className="text-center">
+            <img src="src/img/images6.jpg"/>
         </div>
     }
 });
@@ -41,7 +68,6 @@ const Title = React.createClass({
 const Bottom = React.createClass({
     render: function () {
         return <div id="form-4" className="design">
-            <h1 className="col-xs-offset-1 col-xs-10">注册</h1>
             <form>
                 <p className="col-xs-offset-1 col-xs-10">
                     <input type="text" name="username" placeholder="用户名"/>
