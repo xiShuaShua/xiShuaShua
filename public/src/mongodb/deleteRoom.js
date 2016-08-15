@@ -4,7 +4,7 @@ var DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
 var deleteData = function (db, callback) {
     var collection = db.collection('room');
 
-    var deleteStr = {"_id" : 2};
+    var deleteStr = {"_id": 2};
 
     collection.remove(deleteStr, function (err, result) {
         if (err) {

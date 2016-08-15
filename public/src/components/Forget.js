@@ -1,5 +1,5 @@
 const Forget = React.createClass({
-    render:function () {
+    render: function () {
         return <div>
             <Title />
             <Bottom />
@@ -23,7 +23,7 @@ const Title = React.createClass({
 const Bottom = React.createClass({
     render: function () {
         return <div id="form-4" className="design">
-           <center> <h1 className="col-xs-offset-1 col-xs-10">找回密码</h1></center>
+            <center><h1 className="col-xs-offset-1 col-xs-10">找回密码</h1></center>
             <form>
                 <p className="col-xs-offset-1 col-xs-10">
                     <input type="text" name="username" placeholder="用户名"/>
@@ -37,7 +37,9 @@ const Bottom = React.createClass({
 
             </form>
             <p className="col-xs-offset-3 col-xs-5">
-               <center> <button className="btn btn-primary" onClick={this.props.target}>发送验证码</button></center>
+                <center>
+                    <button className="btn btn-primary" onClick={this.props.target}>发送验证码</button>
+                </center>
             </p>
         </div>
     }

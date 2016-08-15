@@ -18,10 +18,10 @@ var selectData = function (db, callback) {
     });
 };
 
-exports.findAll = function (req,res) {
+exports.findAll = function (req, res) {
 
     MongoClient.connect(DB_CONN_STR, function (err, db) {
-        selectData(db,function (result) {
+        selectData(db, function (result) {
             db.close();
             res.json(result).end();
         });

@@ -1,32 +1,33 @@
-import React,{Component} from "react"
+import React, {Component} from "react"
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            id:0,
-            time:''
+            id: 0,
+            time: ''
         }
     }
-    getId (id){
+
+    getId(id) {
         this.setState({
-            id:id
+            id: id
         })
     }
 
-    getTime(time){
+    getTime(time) {
         this.setState({
-            time:time
+            time: time
         })
     }
 
     render() {
         return (
-            <div id = {this.getId.bind(this)}>
-                {this.props.children && React.cloneElement(this.props.children,{
-                    id :this.state.id,
-                    time:this.state.time,
-                    onGetId:this.getId.bind(this),
-                    onGetTime:this.getTime.bind(this)
+            <div id={this.getId.bind(this)}>
+                {this.props.children && React.cloneElement(this.props.children, {
+                    id: this.state.id,
+                    time: this.state.time,
+                    onGetId: this.getId.bind(this),
+                    onGetTime: this.getTime.bind(this)
                 })}
             </div>
         )

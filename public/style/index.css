@@ -3,18 +3,23 @@
     line-height: 50px;
     font-size: 1.2em;
 }
+
 .my-nav {
     background-color: deepskyblue;
 }
+
 .my-top {
     margin-top: 5px;
 }
+
 .my-height {
     padding-top: 5px;
 }
+
 .my-bottom {
     margin-bottom: 5px;
 }
+
 .my-padding {
     padding: 15px;
 }
@@ -30,7 +35,8 @@
 .my-img {
     height: 230px;
 }
-.my-img img{
+
+.my-img img {
     width: 100%;
 }
 
@@ -42,67 +48,83 @@
     color: #000;
     background-color: #fff;
 }
+
 .my-table:hover {
     background-color: #f9f9f9;
 }
-.my-server{
+
+.my-server {
     height: 40px;
     width: 40px;
     border-radius: 50%;
     margin-top: 10px;
 }
+
 .my-blue {
     background-color: #00b3ee;
 }
+
 .my-green {
     background-color: crimson;
 }
+
 .my-red {
     background-color: sandybrown;
 }
+
 .my-purple {
     background-color: mediumpurple;
 }
+
 .my-blue-green {
     background-color: lightgreen;
 }
+
 .my-gray {
     background-color: gray;
 }
+
 .my-yellow {
     background-color: lightcyan;
 }
+
 .my-pink {
     background-color: lightpink;
 }
+
 .my-left {
     position: absolute;
     top: 8px;
     left: 50%;
     margin-left: -10px;
 }
+
 .my-right {
     position: absolute;
     top: 8px;
     right: 50%;
     margin-right: -10px;
 }
+
 .my-text-right {
     position: absolute;
     bottom: 0;
     left: 50%;
     margin-left: -44px;
 }
+
 .my-text-left {
     position: absolute;
     bottom: 0;
     right: 50%;
     margin-right: -44px;
 }
+
 .body {
-    background-color:#f6f6f6;
+    background-color: #f6f6f6;
     overflow-x: hidden;
 }
+
 .btn-top {
     margin-top: 70px;
     position: absolute;
@@ -126,18 +148,17 @@
     padding: 15px 0;
 }
 
-.hu-room{
+.hu-room {
     margin-top: 90px;
 }
-.hu-button{
+
+.hu-button {
     margin-top: 150px;
 }
-
 
 .design {
     margin-top: 20px;
 }
-
 
 #content input[type="text"],
 #content input[type="password"] {
@@ -165,8 +186,8 @@
     width: 80%;
 }
 
-#content  input[type="text"]:focus,
-#content  input[type="password"]:focus {
+#content input[type="text"]:focus,
+#content input[type="password"]:focus {
     -webkit-box-shadow: 0 0 5px deepskyblue;
     -moz-box-shadow: 0 0 5px deepskyblue;
     -ms-box-shadow: 0 0 5px deepskyblue;
@@ -235,7 +256,7 @@
     /* Font styles */
     font-family: 'Raleway', 'Lato', Arial, sans-serif;
     color: black;
-    text-shadow: 0 2px 1px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
 }
 
 #form-4 h1 {
@@ -252,12 +273,11 @@
 
     /* Styles */
     border: 1px solid #4e3043; /* Fallback */
-    border: 1px solid rgba(78,48,67, 0.8);
-    background: rgba(0,0,0,0.15);
+    border: 1px solid rgba(78, 48, 67, 0.8);
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 2px;
-    box-shadow:
-            0 1px 0 rgba(255,255,255,0.2),
-            inset 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 1px 1px rgba(0, 0, 0, 0.1);
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -ms-transition: all 0.3s ease-out;
@@ -273,18 +293,18 @@
 /* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
 
 #form-4 input::-webkit-input-placeholder {
-    color: rgba(37,21,26,0.5);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    color: rgba(37, 21, 26, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 #form-4 input:-moz-placeholder {
-    color: rgba(37,21,26,0.5);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    color: rgba(37, 21, 26, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 #form-4 input:-ms-input-placeholder {
-    color: rgba(37,21,26,0.5);
-    text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+    color: rgba(37, 21, 26, 0.5);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 #form-4 input[type="text"]:hover,
@@ -295,10 +315,9 @@
 #form-4 input[type="text"]:focus,
 #form-4 input[type="password"]:focus,
 #form-4 input[type="submit"]:focus {
-    box-shadow:
-            0 1px 0 rgba(255,255,255,0.2),
-            inset 0 1px 1px rgba(0,0,0,0.1),
-            0 0 0 3px rgba(255,255,255,0.15);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 1px 1px rgba(0, 0, 0, 0.1),
+    0 0 0 3px rgba(255, 255, 255, 0.15);
     outline: none;
 }
 
@@ -315,15 +334,15 @@
 
     /* Styles */
     background: #634056;
-    background: -moz-linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
-    background: -ms-linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
-    background: -o-linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(99,64,86,0.5)), to(rgba(76,49,65,0.7)));
-    background: -webkit-linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
-    background: linear-gradient(rgba(99,64,86,0.5), rgba(76,49,65,0.7));
+    background: -moz-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+    background: -ms-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+    background: -o-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(99, 64, 86, 0.5)), to(rgba(76, 49, 65, 0.7)));
+    background: -webkit-linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
+    background: linear-gradient(rgba(99, 64, 86, 0.5), rgba(76, 49, 65, 0.7));
     border-radius: 5px;
     border: 1px solid #4e3043;
-    box-shadow: inset 0 1px rgba(255,255,255,0.4), 0 2px 1px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 2px 1px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
@@ -333,16 +352,15 @@
 
     /* Font styles */
     color: black;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
     font-size: 16px;
     font-weight: bold;
     font-family: 'Raleway', 'Lato', Arial, sans-serif;
 }
 
 #form-4 input[type="submit"]:hover {
-    box-shadow:
-            inset 0 1px rgba(255,255,255,0.2),
-            inset 0 20px 30px rgba(99,64,86,0.5);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 20px 30px rgba(99, 64, 86, 0.5);
 }
 
 /* Fallback */
@@ -367,7 +385,7 @@
 .container > header h1,
 .container > header h2 {
     color: black;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
 }
 
 #form-4 label {
@@ -384,18 +402,18 @@
     display: block;
 }
 
-.success h3{
-    color:#00b3ee;
+.success h3 {
+    color: #00b3ee;
     margin-top: 50px;
 }
 
-.send{
+.send {
     margin-top: 50px;
     font-size: 1.4em;
     color: #31b0d5;
 }
 
-.time{
+.time {
     margin-top: 40px;
 }
 

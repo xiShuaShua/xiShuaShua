@@ -85,7 +85,8 @@ const Body = React.createClass({
                 </div>
                 <div className="col-xs-6 my-table">
                     <div className="my-server my-purple center-block my-right">
-                        <span className="glyphicon glyphicon-phone-alt glyphicon glyphicon-tower my-white-color"> </span>
+                        <span
+                            className="glyphicon glyphicon-phone-alt glyphicon glyphicon-tower my-white-color"> </span>
                     </div>
                     <div className="my-text-right">众包服务</div>
                 </div>

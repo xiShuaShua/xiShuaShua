@@ -9,10 +9,11 @@ const Best = React.createClass({
     },
 
     componentDidMount: function () {
-        if(this.isMounted()){
-        $.get('/selectRooms', (result)=> {
-            this.toggle(result);
-        })}
+        if (this.isMounted()) {
+            $.get('/selectRooms', (result)=> {
+                this.toggle(result);
+            })
+        }
     },
 
     toggle: function (result) {
@@ -22,21 +23,21 @@ const Best = React.createClass({
 
         for (let i = 0; i < rooms.length; i++) {
             let tag = 0;
-            rooms[i].room.map((item,index)=>{
-                if (item.state === "0" && tag === 0&& myTime<parseInt(item.time.split(":")[0])) {
+            rooms[i].room.map((item, index)=> {
+                if (item.state === "0" && tag === 0 && myTime < parseInt(item.time.split(":")[0])) {
                     this.state.canRecommends.push({id: rooms[i]._id, time: item.time});
-                    this.setState({canRecommends:this.state.canRecommends})
+                    this.setState({canRecommends: this.state.canRecommends})
                     tag = 1;
                 }
             });
         }
 
         const canRecommends = this.state.canRecommends;
-        this.state.canRecommends.map(canRecommend=>{
+        this.state.canRecommends.map(canRecommend=> {
             this.state.recommendTimes.push(parseInt(canRecommend.time.split(":")[0]));
-            this.setState({recommendTimes:this.state.recommendTimes});
+            this.setState({recommendTimes: this.state.recommendTimes});
             this.state.recommendRooms.push(canRecommend.id);
-            this.setState({recommendRooms:this.state.recommendRooms})
+            this.setState({recommendRooms: this.state.recommendRooms})
         });
 
         for (let i = this.state.recommendTimes.length - 1; i > 0; i--) {
@@ -98,8 +99,8 @@ const Button = React.createClass({
         return <div className="col-md-6 ">
             <center>
                 <ReactRouter.Link to="/success">
-                <button className="btn hu-button btn-lg  btn-info">预约</button>
-                    </ReactRouter.Link>
+                    <button className="btn hu-button btn-lg  btn-info">预约</button>
+                </ReactRouter.Link>
             </center>
         </div>
     }

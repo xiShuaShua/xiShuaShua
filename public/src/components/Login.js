@@ -19,8 +19,8 @@ const Title = React.createClass({
                 </ReactRouter.Link>
                 <li className="col-xs-4 text-center">登录</li>
                 <ReactRouter.Link to="register">
-                <li className="col-xs-4 text-right">注册</li>
-                    </ReactRouter.Link>
+                    <li className="col-xs-4 text-right">注册</li>
+                </ReactRouter.Link>
             </ul>
         </div>
     }
@@ -39,11 +39,11 @@ const Top = React.createClass({
     render: function () {
         return <div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
             <ol className="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" className="active"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="4"> </li>
+                <li data-target="#carousel-example-generic" data-slide-to="0" className="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
 
             </ol>
 
@@ -88,15 +88,15 @@ const Bottom = React.createClass({
             </div>
             <div className="col-xs-offset-3">
                 <ReactRouter.Link to="first">
-                <input type="submit" value="登录"/>
-                    </ReactRouter.Link>
+                    <input type="submit" value="登录"/>
+                </ReactRouter.Link>
             </div>
             <br/>
             <br/>
             <div className="design">
                 <ReactRouter.Link to="forget">
-                <a href="#">忘记密码</a>
-                    </ReactRouter.Link>
+                    <a href="#">忘记密码</a>
+                </ReactRouter.Link>
             </div>
         </div>
     }
