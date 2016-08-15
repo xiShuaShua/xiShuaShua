@@ -16,10 +16,7 @@ var deleteData = function (db, callback) {
 };
 
 MongoClient.connect(DB_CONN_STR, function (err, db) {
-    console.log("\n" + "******connect succeed*******" + "\n");
     deleteData(db, function (result) {
-        console.log("\n" + "delete succeed" + "\n");
-        console.log(result);
         db.close();
     });
 });

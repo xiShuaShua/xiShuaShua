@@ -15,13 +15,12 @@ const SighUp = React.createClass({
         else {
             alert("两次输入密码不相同，请重新输入");
         }
-
     },
 
     render: function () {
         return <div>
-            <Title/>
-            <Bottom target={this.target}/>
+        <Title/>
+        <Bottom target={this.target}/>
         </div>
     }
 });
@@ -30,12 +29,12 @@ const Title = React.createClass({
     render: function () {
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
-                <ReactRouter.Link to="/login">
-                <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
-                    </ReactRouter.Link>
-                <li className="col-xs-4 text-center">注册</li>
+            <ReactRouter.Link to="/login">
+            <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
+            </ReactRouter.Link>
+            <li className="col-xs-4 text-center">注册</li>
             </ul>
-        </div>
+            </div>
     }
 });
 
@@ -44,20 +43,19 @@ const Bottom = React.createClass({
         return <div id="form-4" className="design">
             <h1 className="col-xs-offset-1 col-xs-10">注册</h1>
             <form>
-                <p className="col-xs-offset-1 col-xs-10">
-                    <input type="text" name="username" placeholder="用户名"/>
-                </p>
-                <p className="col-xs-offset-1 col-xs-10">
-                    <input type="password" name='password' placeholder="密码"/>
-                </p>
-                <p className="col-xs-offset-1 col-xs-10">
-                    <input type="password" name='password-sure' placeholder="确认密码"/>
-                </p>
-
+            <p className="col-xs-offset-1 col-xs-10">
+            <input type="text" name="username" placeholder="用户名"/>
+            </p>
+            <p className="col-xs-offset-1 col-xs-10">
+            <input type="password" name='password' placeholder="密码"/>
+            </p>
+            <p className="col-xs-offset-1 col-xs-10">
+            <input type="password" name='password-sure' placeholder="确认密码"/>
+            </p>
             </form>
             <p className="col-xs-offset-3 col-xs-5">
-                <button className="btn btn-primary" onClick={this.props.target}>注册</button>
-            </p>
+            <button className="btn btn-primary" onClick={this.props.target}>注册</button>
+        </p>
         </div>
     }
 });

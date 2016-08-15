@@ -92,7 +92,9 @@ const Bottom = React.createClass({
             <br/>
             <br/>
             <div className="design">
+                <ReactRouter.Link to="forget">
                 <a href="#">忘记密码</a>
+                    </ReactRouter.Link>
             </div>
         </div>
     }
