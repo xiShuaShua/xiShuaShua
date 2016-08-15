@@ -23,7 +23,7 @@ const insertData = require('./public/src/mongodb/insertRoom');
 const selectData = require('./public/src/mongodb/selectRoom');
 const updateData = require('./public/src/mongodb/updateRoom');
 const insertUser = require('./public/src/userINfoMongodb/insertUser');
-
+const selectUser = require('./public/src/userINfoMongodb/getFind');
 
 app.post('/insertRoom',insertData.save);
 app.get('/selectRooms',selectData.findAll);
@@ -33,6 +33,7 @@ app.get('/selectRooms',selectData.findAll);
 app.post('/insertRoom',insertData.save);
 app.post('/updateRoom',updateData.update);
 app.post('/insertUser', insertUser.insertUser);
+app.post('/selectUser',selectUser.findUser);
 
 app.listen(8080, function() {
   console.log("server started at http://localhost:8080");

@@ -1,10 +1,35 @@
 'use strict';
 const Login = React.createClass({
+    getInitialState:function(){
+        return {
+            user:[],
+            isSame:false
+        }
+    },
+    jude:function () {
+        let username = $("input[name=username]").val();
+        let password = $("input[name=password]").val();
+        $.post('/selectUser',{"name":username,password},(data)=>{
+            if(username === ''){
+                alert("用户名不能为空，请输入用户名")
+            }
+            else if(password === ''){
+                alert("密码不能为空，请输入密码")
+            }
+            else if(data.length === 0){
+                alert("输入的用户名或密码错误")
+            }
+            else{
+                this.setState({isSame:!this.state.isSame})
+            }
+        })
+    },
+
     render: function () {
         return <div>
             <Title/>
             <div>
-                <Body/>
+                <Body toggle={this.jude} isSame={this.state.isSame}/>
             </div>
         </div>
     }
@@ -30,49 +55,15 @@ const Body = React.createClass({
     render: function () {
         return <div>
             <Top/>
-            <Bottom/>
+            <Bottom toggle={this.props.toggle} isSame={this.props.isSame}/>
         </div>
     }
 });
 
 const Top = React.createClass({
     render: function () {
-        return <div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
-            <ol className="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" className="active"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"> </li>
-                <li data-target="#carousel-example-generic" data-slide-to="4"> </li>
-
-            </ol>
-
-            <div className="carousel-inner" role="listbox">
-                <div className="item active img-rounded">
-                    <img src="src/img/2.jpg" alt="..."/>
-                </div>
-                <div className="item img-rounded">
-                    <img src="src/img/10.png"/>
-                </div>
-                <div className="item img-rounded">
-                    <img src="src/img/3.jpg" alt="..."/>
-                </div>
-                <div className="item img-rounded">
-                    <img src="src/img/6.jpg" alt="..."/>
-                </div>
-                <div className="item img-rounded">
-                    <img src="src/img/11.png" alt="..."/>
-                </div>
-            </div>
-
-            <a className="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"> </span>
-                <span className="sr-only">Previous</span>
-            </a>
-            <a className="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"> </span>
-                <span className="sr-only">Next</span>
-            </a>
+        return <div>
+            <img src="src/img/7.jpg"/>
         </div>
     }
 });
@@ -81,14 +72,14 @@ const Bottom = React.createClass({
     render: function () {
         return <div className="design" id="content">
             <div className="col-xs-offset-2">
-                <input type="text" placeholder="用户名" required="" id="username"/>
+                <input type="text" placeholder="用户名" name="username" id="username"/>
             </div>
             <div className="col-xs-offset-2">
-                <input type="password" placeholder="密码" required="" id="password"/>
+                <input type="password" placeholder="密码" name="password" id="password"/>
             </div>
             <div className="col-xs-offset-3">
-                <ReactRouter.Link to="first">
-                <input type="submit" value="登录"/>
+                <ReactRouter.Link to={this.props.isSame ? 'First':'Login'}>
+                <input type="submit" value="登录" onClick={this.props.toggle}/>
                     </ReactRouter.Link>
             </div>
             <br/>

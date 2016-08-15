@@ -9,6 +9,9 @@ const SighUp = React.createClass({
         let username = $("input[name=username]").val();
         let password = $("input[name=password]").val();
         let surepassword = $("input[name=password-sure]").val();
+        if(username === ''){
+
+        }
         if (surepassword === password) {
             $.post('/insertUser', {name: username, password});
         }
@@ -20,6 +23,7 @@ const SighUp = React.createClass({
     render: function () {
         return <div>
             <Title/>
+            <Top/>
             <Bottom target={this.target}/>
         </div>
     }
@@ -38,10 +42,17 @@ const Title = React.createClass({
     }
 });
 
+const Top = React.createClass({
+    render: function () {
+        return <div className="text-center">
+            <img src="src/img/images6.jpg"/>
+        </div>
+    }
+});
+
 const Bottom = React.createClass({
     render: function () {
         return <div id="form-4" className="design">
-            <h1 className="col-xs-offset-1 col-xs-10">注册</h1>
             <form>
                 <p className="col-xs-offset-1 col-xs-10">
                     <input type="text" name="username" placeholder="用户名"/>

@@ -4,7 +4,9 @@ const Home = React.createClass({
             <ul className="nav">
                 <li className="col-xs-4"><span className="glyphicon glyphicon-user"></span></li>
                 <li className="col-xs-4 text-center">洗刷刷</li>
+                <ReactRouter.Link to = "/login">
                 <li className="col-xs-4 text-right"><span className="glyphicon glyphicon-heart">收藏</span></li>
+                </ReactRouter.Link>
             </ul>
             <Top />
             <Body />
