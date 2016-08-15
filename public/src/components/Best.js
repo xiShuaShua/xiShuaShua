@@ -22,22 +22,23 @@ const Best = React.createClass({
 
         for (let i = 0; i < rooms.length; i++) {
             let tag = 0;
-            for (let j = 0; j < rooms[i].room.length; j++) {
-                if (rooms[i].room[j].state === "0" && tag === 0&& myTime<parseInt(rooms[i].room[j].time.split(":")[0])) {
-                    this.state.canRecommends.push({id: rooms[i]._id, time: rooms[i].room[j].time});
+            rooms[i].room.map((item,index)=>{
+                if (item.state === "0" && tag === 0&& myTime<parseInt(item.time.split(":")[0])) {
+                    this.state.canRecommends.push({id: rooms[i]._id, time: item.time});
                     this.setState({canRecommends:this.state.canRecommends})
                     tag = 1;
                 }
-            }
+            });
         }
 
         const canRecommends = this.state.canRecommends;
-        for (let i = 0; i < canRecommends.length; i++) {
-            this.state.recommendTimes.push(parseInt(canRecommends[i].time.split(":")[0]));
+        this.state.canRecommends.map(canRecommend=>{
+            this.state.recommendTimes.push(parseInt(canRecommend.time.split(":")[0]));
             this.setState({recommendTimes:this.state.recommendTimes});
-            this.state.recommendRooms.push(canRecommends[i].id);
+            this.state.recommendRooms.push(canRecommend.id);
             this.setState({recommendRooms:this.state.recommendRooms})
-        }
+        });
+
         for (let i = this.state.recommendTimes.length - 1; i > 0; i--) {
             if (this.state.recommendTimes[i] < this.state.recommendTimes[i - 1]) {
                 this.state.recommendTimes[i - 1] = this.state.recommendTimes[i];

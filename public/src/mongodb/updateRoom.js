@@ -1,20 +1,19 @@
-var MongoClient = require('mongodb').MongoClient;
-var DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
-var updateData = function (db, element, item, index, callback) {
-
-    var collection = db.collection('room');
-    var whereStr = {"_id": parseInt(element._id)};
+const MongoClient = require('mongodb').MongoClient;
+const DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
+const updateData = function (db, element, item, index, callback) {
+    const collection = db.collection('room');
+    const whereStr = {"_id": parseInt(element._id)};
 
     element.room.map(temp=> {
         if (temp.time === item.time) {
-            var updateStr = {
+            const updateStr = {
                 $set: {
                     "room": [
                         (index === 0) ? {"time": item.time, "state": "1"} : element.room[0],
                         (index === 1) ? {"time": item.time, "state": "1"} : element.room[1],
-                        (index === 2)? {"time": item.time, "state": "1"}: element.room[2],
-                        (index === 3)? {"time": item.time, "state": "1"} : element.room[3],
-                        (index === 4)? {"time": item.time, "state": "1"} : element.room[4],
+                        (index === 2) ? {"time": item.time, "state": "1"} : element.room[2],
+                        (index === 3) ? {"time": item.time, "state": "1"} : element.room[3],
+                        (index === 4) ? {"time": item.time, "state": "1"} : element.room[4],
                     ]
                 }
             };

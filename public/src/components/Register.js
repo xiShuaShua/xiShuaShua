@@ -15,7 +15,6 @@ const SighUp = React.createClass({
         else {
             alert("两次输入密码不相同，请重新输入");
         }
-
     },
 
     render: function () {
@@ -53,7 +52,6 @@ const Bottom = React.createClass({
                 <p className="col-xs-offset-1 col-xs-10">
                     <input type="password" name='password-sure' placeholder="确认密码"/>
                 </p>
-
             </form>
             <p className="col-xs-offset-3 col-xs-5">
                 <button className="btn btn-primary" onClick={this.props.target}>注册</button>

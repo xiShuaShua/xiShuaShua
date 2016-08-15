@@ -48,12 +48,10 @@ const Middle = React.createClass({
             <h4 className="col-xs-6 text-center">时间段</h4>
             <h4 className="col-xs-6 text-center">状态</h4>
         </div>
-
     }
 });
 
 const List = React.createClass({
-
 
     update: function (element, item) {
         this.props.onGetTime(item.time);
@@ -62,7 +60,6 @@ const List = React.createClass({
     },
 
     render: function () {
-
         const myDate = new Date();
         const myTime = myDate.getHours();
 
