@@ -2,7 +2,9 @@ const Home = React.createClass({
     render: function () {
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
-                <li className="col-xs-4"><span className="glyphicon glyphicon-user"></span></li>
+                <ReactRouter.Link to = "/menu">
+                    <li className="col-xs-4"><span className="glyphicon glyphicon-user">个人中心</span></li>
+                </ReactRouter.Link>
                 <li className="col-xs-4 text-center">洗刷刷</li>
                 <li className="col-xs-4 text-right"><span className="glyphicon glyphicon-heart">收藏</span></li>
             </ul>
