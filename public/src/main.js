@@ -7,13 +7,15 @@ import App from "./components/App";
 import Forget from "./components/Forget";
 import Home from "./components/Home";
 import Success from "./components/Success";
+import Menu from "./components/privateCenter";
 
 ReactDOM.render(
     <ReactRouter.Router>
         <ReactRouter.Route path="/" component={App}>
             <ReactRouter.IndexRoute component={Home}/>
-
+            <ReactRouter.Route path = "/menu" component = {Menu}/>
             <ReactRouter.Route path="/first" component={First}/>
+            <ReactRouter.Route path="/home" component={Home}/>
             <ReactRouter.Route path="/second" component={Second}/>
             <ReactRouter.Route path="/login" component={Login}/>
             <ReactRouter.Route path="/best" component={Best}/>
