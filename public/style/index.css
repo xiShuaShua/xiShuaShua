@@ -22,14 +22,16 @@
 .my-write {
     background-color: #fff;
 }
+
+.my-white-color {
+    color: #fff;
+}
+
 .my-img {
     height: 230px;
 }
 .my-img img{
     width: 100%;
-}
-.my-white-color {
-    color: #fff;
 }
 .my-table {
     position: relative;
