@@ -25,7 +25,7 @@ const Home = React.createClass({
         const sideBar = {
             height: clientHeight,
             width: 185,
-            backgroundColor: '#000',
+            backgroundColor: '#000' ,
             zIndex: 1
         };
 
