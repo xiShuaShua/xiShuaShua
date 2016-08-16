@@ -16,23 +16,30 @@ app.use(require('webpack-dev-middleware')(compiler, {
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
+
 app.use(express.static('public'));
 
-const selectData = require('./public/src/mongodb/rooms/selectRoom');
-const updateData = require('./public/src/mongodb/rooms/updateRoom');
-const insertUser = require('./public/src/mongodb/users/insertUser');
-const updateUser = require('./public/src/mongodb/users/updateUser');
-const selectUser = require('./public/src/mongodb/users/selectUser');
+const insertData = require('./public/src/mongodb/insertRoom');
+const selectData = require('./public/src/mongodb/selectRoom');
+const updateData = require('./public/src/mongodb/updateRoom');
+const insertUser = require('./public/src/userINfoMongodb/insertUser');
+const updateUser = require('./public/src/userINfoMongodb/updateUserInfo');
+const selectUser = require('./public/src/userINfoMongodb/getFind');
+const initData = require('./public/src/mongodb/initRoom');
 
-app.get('/rooms', selectData.findAll);
-app.post('/rooms', updateData.update);
+app.get('/initData', initData.init);
 
+app.post('/insertRoom', insertData.save);
+app.get('/selectRooms', selectData.findAll);
+app.post('/updateRoom', updateData.update);
+
+app.get('/selectRooms', selectData.findAll);
+app.post('/insertRoom', insertData.save);
+app.post('/updateRoom', updateData.update);
 app.post('/insertUser', insertUser.insertUser);
-app.post('/users', updateUser.update);
+app.post('/updateUser', updateUser.update);
 app.post('/selectUser',selectUser.findUser);
 
 app.listen(8080, function () {
     console.log("server started at http://localhost:8080");
 });
-
-
