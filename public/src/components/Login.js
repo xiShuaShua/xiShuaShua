@@ -9,7 +9,8 @@ const Login = React.createClass({
     jude:function () {
         let username = $("input[name=username]").val();
         let password = $("input[name=password]").val();
-        $.post('/selectUser',{"name":username,password},(data)=>{
+
+        $.post('/selectUser',{"name":username},(data)=>{
             if(username === ''){
                 alert("用户名不能为空，请输入用户名")
             }
@@ -17,9 +18,16 @@ const Login = React.createClass({
                 alert("密码不能为空，请输入密码")
             }
             else if(data.length === 0){
-                alert("输入的用户名或密码错误")
+                alert("该用户不存在")
+                $("input[name=username]").val('');
+                $("input[name=password]").val('');
+            }
+            else if(data[0].password != password){
+                alert("密码不正确")
+                $("input[name=password]").val('');
             }
             else{
+                alert("登录成功")
                 this.setState({isSame:!this.state.isSame})
             }
         })
@@ -42,9 +50,9 @@ const Title = React.createClass({
                 <ReactRouter.Link to="/home">
                     <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
                 </ReactRouter.Link>
-                <li className="col-xs-4 text-center">登录</li>
+                <li className="col-xs-4 text-center" >登录</li>
                 <ReactRouter.Link to="register">
-                <li className="col-xs-4 text-right">注册</li>
+                <li className="col-xs-4 text-right" >注册</li>
                     </ReactRouter.Link>
             </ul>
         </div>
@@ -72,7 +80,7 @@ const Bottom = React.createClass({
     render: function () {
         return <div className="design" id="content">
             <div className="col-xs-offset-2">
-                <input type="text" placeholder="用户名" name="username" id="username"/>
+                <input type="text" placeholder="用户名" name="username" id="username" autoFocus="true"/>
             </div>
             <div className="col-xs-offset-2">
                 <input type="password" placeholder="密码" name="password" id="password"/>
