@@ -8,6 +8,7 @@ import Forget from "./components/Forget";
 import Home from "./components/Home";
 import Success from "./components/Success";
 import Menu from "./components/privateCenter";
+import BestSuccess from "./components/BestSuccess";
 
 ReactDOM.render(
     <ReactRouter.Router>
@@ -22,6 +23,7 @@ ReactDOM.render(
             <ReactRouter.Route path="/register" component={Register}/>
             <ReactRouter.Route path="/forget" component={Forget}/>
             <ReactRouter.Route path="/success" component={Success}/>
+            <ReactRouter.Route path="/bestsuccess" component={BestSuccess}/>
         </ReactRouter.Route>
 
     </ReactRouter.Router>

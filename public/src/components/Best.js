@@ -1,10 +1,12 @@
 'use strict';
 const Best = React.createClass({
+
     getInitialState: function () {
         return {
             canRecommends: [],
             recommendRooms: [],
             recommendTimes: [],
+            myroom: []
         }
     },
 
@@ -12,8 +14,20 @@ const Best = React.createClass({
         if (this.isMounted()) {
             $.get('/selectRooms', (result)=> {
                 this.toggle(result);
+                this.getId(this.state.recommendRooms[0]);
+                this.getBestTime(this.state.recommendTimes[0]);
             })
         }
+    },
+
+    getId:function (id) {
+        console.log(id);
+        this.props.getId(id);
+    },
+
+    getBestTime:function (time) {
+        console.log(time);
+        this.props.getBestTime(time);
     },
 
     toggle: function (result) {
@@ -26,7 +40,7 @@ const Best = React.createClass({
             rooms[i].room.map((item, index)=> {
                 if (item.state === "0" && tag === 0 && myTime < parseInt(item.time.split(":")[0])) {
                     this.state.canRecommends.push({id: rooms[i]._id, time: item.time});
-                    this.setState({canRecommends: this.state.canRecommends})
+                    this.setState({canRecommends: this.state.canRecommends});
                     tag = 1;
                 }
             });
@@ -45,18 +59,24 @@ const Best = React.createClass({
                 this.setState({recommendTimes: this.state.recommendTimes});
                 this.state.recommendRooms[i - 1] = this.state.recommendRooms[i];
                 this.setState({recommendRooms: this.state.recommendRooms})
-
             }
         }
+
+        rooms.map(element=> {
+            if (element._id === this.state.recommendRooms[0]) {
+                this.setState({myroom: element});
+            }
+        })
     },
+
 
     render: function () {
 
         return <div>
             <Header/>
-            <Room room={this.state.recommendRooms[0] && this.state.recommendRooms[0]}/>
-            <Time time={this.state.recommendTimes[0]}/>
-            <Button/>
+            <Room room={this.state.recommendRooms[0] && this.state.recommendRooms[0]} />
+            <Time time={this.state.recommendTimes[0]} />
+            <Button element={this.state.myroom} index={this.state.recommendTimes[0] - 17}/>
         </div>
     }
 });
@@ -97,13 +117,23 @@ const Time = React.createClass({
     }
 });
 const Button = React.createClass({
+    update: function () {
+        const element = this.props.element;
+        const index = this.props.index;
+        const item = element.room[index];
+
+        $.post('/updateRoom', ({element, item, index}));
+    },
     render: function () {
-        return <div className="col-md-6 ">
-            <center>
-                <ReactRouter.Link to="/success">
-                    <button className="btn hu-button btn-lg  btn-info">预约</button>
+        return <div>
+            <div>
+                <ReactRouter.Link to="/bestSuccess">
+                    <button className=" buttonOne btn  btn-lg  btn-info" onClick={this.update}>预约</button>
                 </ReactRouter.Link>
-            </center>
+                <ReactRouter.Link to="/first">
+                    <button className="buttonTwo btn btn-lg ">自主预约</button>
+                </ReactRouter.Link>
+            </div>
         </div>
     }
 });

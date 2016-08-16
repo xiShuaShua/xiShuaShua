@@ -183,6 +183,24 @@
     margin-top: 20px;
 }
 
+.time{
+    margin-top: 40px;
+}
+
+.pay{
+    margin-top: 90px;
+}
+
+.buttonOne{
+    margin-top: 40px;
+    margin-left: 150px;
+}
+.buttonTwo{
+    margin-top:100px;
+    margin-left: 130px;
+    background-color:#46b8da;
+}
+
 #content input[type="text"],
 #content input[type="password"] {
     -webkit-border-radius: 3px;

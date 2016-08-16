@@ -20,6 +20,12 @@ class App extends Component {
         })
     }
 
+    getBestTime(time){
+        this.setState({
+            bestTime:time
+        })
+    }
+
     render() {
         return (
             <div id={this.getId.bind(this)}>

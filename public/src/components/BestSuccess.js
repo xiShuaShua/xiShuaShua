@@ -1,13 +1,12 @@
 'use strict';
 
-const Success = React.createClass({
+const BestSuccess = React.createClass({
 
     render: function () {
-
         const myDate = new Date();
         const hour = myDate.getHours();
         const minutes = myDate.getMinutes();
-        const time = this.props.time.split(':');
+        const time = this.props.bestTime;
         const gapTime = (minutes === 0) ? time[0] - hour : time[0] - (hour + 1);
 
         return <div>
@@ -41,4 +40,4 @@ const Success = React.createClass({
     }
 });
 
-export default Success
+export default BestSuccess

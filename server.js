@@ -38,8 +38,6 @@ app.post('/insertUser', insertUser.insertUser);
 app.post('/updateUser', updateUser.update);
 app.post('/selectUser',selectUser.findUser);
 
-
-
 app.listen(8080, function () {
     console.log("server started at http://localhost:8080");
 });

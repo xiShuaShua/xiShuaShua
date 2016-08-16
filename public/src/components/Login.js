@@ -27,7 +27,7 @@ const Login = React.createClass({
                 $("input[name=password]").val('');
             }
             else{
-                alert("登录成功")
+                alert("登录成功");
                 this.setState({isSame:!this.state.isSame})
             }
         })
