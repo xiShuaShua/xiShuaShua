@@ -46,7 +46,7 @@ const Best = React.createClass({
                 this.state.recommendTimes[i - 1] = this.state.recommendTimes[i];
                 this.setState({recommendTimes: this.state.recommendTimes});
                 this.state.recommendRooms[i - 1] = this.state.recommendRooms[i];
-                this.setState({recommendRooms: this.state.recommendRooms})
+                this.setState({recommendRooms: this.state.recommendRooms});
             }
         }
     },
