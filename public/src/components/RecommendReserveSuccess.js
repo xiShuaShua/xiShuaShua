@@ -107,7 +107,6 @@ const Header = React.createClass({
 const Room = React.createClass({
     render: function () {
         return <div>
-            <div>
                 <div className="row middle my-write hu-room">
                     <div className={this.props.room ? "" : "hidden"}>
                         <h4 className="col-md-6 text-center">房间号:{this.props.room}</h4>
@@ -116,7 +115,6 @@ const Room = React.createClass({
                         <h4 className="col-md-6 text-center">不好意思</h4>
                     </div>
                 </div>
-            </div>
         </div>
     }
 });
@@ -124,7 +122,6 @@ const Room = React.createClass({
 const Time = React.createClass({
     render: function () {
         return <div>
-            <div>
                 <div className="row middle my-write hu-room">
                     <div className={this.props.time ? "" : "hidden"}>
                         <h4 className="col-md-6 text-center">时间:{this.props.time}：00-{this.props.time + 1}:00</h4>
@@ -133,7 +130,6 @@ const Time = React.createClass({
                         <h4 className="col-md-6 text-center">房间已满，您可明日再试</h4>
                     </div>
                 </div>
-            </div>
         </div>
     }
 });
