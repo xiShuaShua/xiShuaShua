@@ -12,7 +12,7 @@ const Home = React.createClass({
       this.setState({flag: 1});
     }else {
       $('#personal').css({color: '#ffffff'});
-      $('#sideBar').animate({left:"-185"},'slow');
+      $('#sideBar').animate({left:"-170"},'slow');
       this.setState({flag: 0});
     }
   },
@@ -21,7 +21,7 @@ const Home = React.createClass({
     const clientHeight = $(window).height()-50;
     const sideBar = {
       height: clientHeight,
-      width: '200',
+      width: '185',
       backgroundColor: '#000',
       zIndex: 1
     };
