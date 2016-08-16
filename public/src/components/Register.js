@@ -1,9 +1,9 @@
 const SighUp = React.createClass({
-    getInitialState: function () {
-        return {
-            user: []
-        }
-    },
+    // getInitialState: function () {
+    //     return {
+    //         user: []
+    //     }
+    // },
 
     target: function () {
         let username = $("input[name=username]").val();
