@@ -21,7 +21,7 @@ const Home = React.createClass({
         const clientHeight = $(window).height() - 50;
         const sideBar = {
             height: clientHeight,
-            width: '200',
+            width: '185',
             backgroundColor: '#000',
             zIndex: 1
         };
@@ -56,7 +56,7 @@ const Home = React.createClass({
                 <div className="row my-sidebar-bottom">
                     <div className="col-xs-6"><span className="my-setting-padding">设置</span></div>
                     <ReactRouter.Link to="/login">
-                        <div className="col-xs-6"><span className="my-setting-padding">退出</span></div>
+                        <div className="col-xs-6 my-white-color"><span className="my-setting-padding">退出</span></div>
                     </ReactRouter.Link>
                 </div>
             </div>
