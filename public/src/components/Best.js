@@ -74,9 +74,9 @@ const Best = React.createClass({
 
         return <div>
             <Header/>
-            <Room room={this.state.recommendRooms[0] && this.state.recommendRooms[0]} />
+            <Room room={this.state.recommendRooms[0]} />
             <Time time={this.state.recommendTimes[0]} />
-            <Button element={this.state.myroom} index={this.state.recommendTimes[0] - 17}/>
+            <Button isRecommend={this.state.recommendTimes[0]} element={this.state.myroom} index={this.state.recommendTimes[0] - 17}/>
         </div>
     }
 });
@@ -96,9 +96,14 @@ const Header = React.createClass({
 const Room = React.createClass({
     render: function () {
         return <div>
-            <div className={"this.props.room" ? "" : "hidden"}>
+            <div>
                 <div className="row middle my-write hu-room">
-                    <h4 className="col-md-6 text-center">房间号:{this.props.room}</h4>
+                    <div className={this.props.room?"":"hidden"}>
+                        <h4 className="col-md-6 text-center">房间号:{this.props.room}</h4>
+                    </div>
+                    <div className={this.props.room?"hidden":""}>
+                        <h4 className="col-md-6 text-center">不好意思</h4>
+                    </div>
                 </div>
             </div>
         </div>
@@ -108,9 +113,14 @@ const Room = React.createClass({
 const Time = React.createClass({
     render: function () {
         return <div>
-            <div className={"this.props.room" ? "" : "hidden"}>
-                <div className="row middle my-write">
-                    <h4 className="col-md-6 text-center">时间:{this.props.time}:00-{this.props.time + 1}:00</h4>
+            <div>
+                <div className="row middle my-write hu-room">
+                    <div className={this.props.time?"":"hidden"}>
+                        <h4 className="col-md-6 text-center">时间:{this.props.time}：00-{this.props.time+1}:00</h4>
+                    </div>
+                    <div className={this.props.time?"hidden":""}>
+                        <h4 className="col-md-6 text-center">房间已满，您可明日再试</h4>
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,7 +136,7 @@ const Button = React.createClass({
     },
     render: function () {
         return <div>
-            <div>
+            <div className={this.props.isRecommend?"":"hidden"}>
                 <ReactRouter.Link to="/bestSuccess">
                     <button className=" buttonOne btn  btn-lg  btn-info" onClick={this.update}>预约</button>
                 </ReactRouter.Link>
