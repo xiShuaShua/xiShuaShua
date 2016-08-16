@@ -4,19 +4,19 @@ const Home = React.createClass({
 
     getInitialState: function () {
         return {
-            flag: 0
+          isClicked: true
         }
     },
 
     toggle: function () {
-        if (this.state.flag === 0) {
+        if (this.state.isClicked === true) {
             $('#personal').css({color: '#3547A2'});
             $('#sideBar').animate({left: "0"}, 'fast');
-            this.setState({flag: 1});
+            this.setState({isClicked: false});
         } else {
             $('#personal').css({color: '#ffffff'});
             $('#sideBar').animate({left: "-170"}, 'fast');
-            this.setState({flag: 0});
+            this.setState({isClicked: true});
         }
     },
 
@@ -30,39 +30,31 @@ const Home = React.createClass({
         };
 
         return <div className="row my-nav my-bg my-white-color my-home">
-            <div className="row my-nav-padding">
-                <ul className="nav">
-                    <li className="col-xs-4" id="personal" onClick={this.toggle}><span
-                        className="glyphicon glyphicon-user">个人中心</span></li>
-                    <li className="col-xs-4 text-center">洗刷刷</li>
-                    <li className="col-xs-4 text-right"><span className="glyphicon glyphicon-heart">收藏</span></li>
-                </ul>
+          <div className="row my-nav-padding">
+            <ul className="nav">
+              <li className="col-xs-4" id="personal" onClick={this.toggle}><span
+                  className="glyphicon glyphicon-user">个人中心</span></li>
+              <li className="col-xs-4 text-center">洗刷刷</li>
+              <li className="col-xs-4 text-right"><span className="glyphicon glyphicon-heart">收藏</span></li>
+            </ul>
+          </div>
+          <Carousel/>
+          <FunctionBlock/>
+          <div style={sideBar} className="row my-side-bar" id="sideBar">
+            <ul className="nav text-left">
+              <Sidebar attr='glyphicon glyphicon-plus' routeLink="/login" spanLabel="用户登陆"/>
+              <Sidebar attr='glyphicon glyphicon-pencil' routeLink="/register" spanLabel="用户注册"/>
+              <Sidebar attr='glyphicon glyphicon-heart-empty' routeLink="/dress" spanLabel="个性装扮"/>
+              <Sidebar attr='glyphicon glyphicon-bookmark' routeLink="/active" spanLabel="激活会员"/>
+              <Sidebar attr='glyphicon glyphicon-usd' routeLink="/recharge" spanLabel="会员充值"/>
+            </ul>
+            <div className="row my-sidebar-bottom">
+              <div className="col-xs-6"><span className="my-setting-padding">设置</span></div>
+              <ReactRouter.Link to="/login">
+                <div className="col-xs-6 my-white-color"><span className="my-setting-padding">退出</span></div>
+              </ReactRouter.Link>
             </div>
-            <Carousel/>
-            <FunctionBlock/>
-            <div style={sideBar} className="row my-side-bar" id="sideBar">
-                <ul className="nav text-left">
-                    <ReactRouter.Link to="/login">
-                        <li className="my-white-color"><span
-                            className="glyphicon glyphicon-plus my-logo-padding"> </span>用户登陆
-                        </li>
-                    </ReactRouter.Link>
-                    <ReactRouter.Link to="/register">
-                        <li className="my-white-color"><span
-                            className="glyphicon glyphicon-pencil my-logo-padding my-white-color"> </span>用户注册
-                        </li>
-                    </ReactRouter.Link>
-                    <li><span className="glyphicon glyphicon-heart-empty my-logo-padding"> </span>个性装扮</li>
-                    <li><span className="glyphicon glyphicon-bookmark my-logo-padding"> </span>激活会员</li>
-                    <li><span className="glyphicon glyphicon-usd my-logo-padding"> </span>会员充值</li>
-                </ul>
-                <div className="row my-sidebar-bottom">
-                    <div className="col-xs-6"><span className="my-setting-padding">设置</span></div>
-                    <ReactRouter.Link to="/login">
-                        <div className="col-xs-6 my-white-color"><span className="my-setting-padding">退出</span></div>
-                    </ReactRouter.Link>
-                </div>
-            </div>
+          </div>
         </div>
     }
 });
@@ -162,5 +154,30 @@ const FunctionBlock = React.createClass({
         </div>
     }
 });
+
+const Sidebar = React.createClass({
+  getInitialState: function () {
+    return {
+      spanAttr:'my-logo-padding ',
+      routerLink: '',
+      label: ''
+    }
+  },
+  componentDidMount: function () {
+    const attrStr = this.state.spanAttr + this.props.attr;
+    this.setState({spanAttr: attrStr});
+    this.setState({routerLink: this.props.routeLink});
+    this.setState({label: this.props.spanLabel});
+  },
+
+  render: function () {
+    return <ReactRouter.Link to={this.state.routerLink}>
+      <li className="my-white-color">
+        <span className={this.state.spanAttr}> </span>{this.state.label}
+      </li>
+    </ReactRouter.Link>
+  }
+});
+
 
 export default Home;
