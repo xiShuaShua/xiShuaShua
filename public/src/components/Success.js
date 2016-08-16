@@ -3,7 +3,6 @@
 const Success = React.createClass({
 
     render: function () {
-
         const myDate = new Date();
         const hour = myDate.getHours();
         const minites = 60 - myDate.getMinutes();
