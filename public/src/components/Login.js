@@ -30,7 +30,6 @@ const Login = React.createClass({
                 $("input[name=password]").val('');
             }
             else {
-                alert("登录成功");
                 this.setState({isSame: !this.state.isSame})
             }
         })
@@ -54,7 +53,7 @@ const Header = React.createClass({
                 <ReactRouter.Link to="/home">
                     <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
                 </ReactRouter.Link>
-                <li className="col-xs-4 text-center">登录</li>
+                <li className="col-xs-4 text-center">洗刷刷</li>
                 <ReactRouter.Link to="register">
                     <li className="col-xs-4 text-right">注册</li>
                 </ReactRouter.Link>
@@ -90,7 +89,7 @@ const LoginArea = React.createClass({
                 <input type="password" placeholder="密码" name="password" id="password"/>
             </div>
             <div className="col-xs-offset-3">
-                <ReactRouter.Link to={this.props.isSame ? 'ReserveRoom' : 'Login'}>
+                <ReactRouter.Link to={this.props.isSame ? '/home' : ''}>
                     <input type="submit" value="登录" onClick={this.props.toggle}/>
                 </ReactRouter.Link>
             </div>
