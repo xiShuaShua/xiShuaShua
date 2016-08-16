@@ -6,35 +6,41 @@ const Register = React.createClass({
         let username = $("input[name=username]").val();
         let password = $("input[name=password]").val();
         let surepassword = $("input[name=password-sure]").val();
-        if(username === ''){
+        if (username === '') {
             alert("用户名不能为空，请输入用户名")
         }
-        else if(password===''){
+        else if (password === '') {
             alert("密码不能为空，请输入密码")
         }
-        else  if(surepassword === ''){
+        else if (surepassword === '') {
             alert("密码不能为空，请输入密码")
-        }
-        else if(surepassword === password) {
-            $.post('/selectUser',{"name":username},(data)=>{
-                if(data.length === 0){
-                    $.post('/insertUser', {name: username, password},(data)=>{
-                    });
-                    alert("注册成功");
+        } else {
+            $.post('/selectUser', {"name": username}, (data)=> {
+                if (data.length === 0) {
+                    if (surepassword !== password) {
+                        alert("两次输入密码不相同，请重新输入");
+                        $("input[name=password]").val('');
+                        $("input[name=password-sure]").val('');
+                        $("input[name=password]").focus();
+
+                    } else {
+                        $.post('/insertUser', {name: username, password}, (data)=> {
+                        });
+                        alert("注册成功");
+                        $("input[name=username]").val('');
+                        $("input[name=password]").val('');
+                        $("input[name=password-sure]").val('');
+                    }
+
+                } else {
+                    alert('该用户已存在，请重新输入');
                     $("input[name=username]").val('');
                     $("input[name=password]").val('');
                     $("input[name=password-sure]").val('');
-                }
-                else{
-                    alert('该用户已存在，请重新输入')
-                    $("input[name=username]").val('');
-                    $("input[name=password]").val('');
-                    $("input[name=password-sure]").val('');
+                    $("input[name=username]").focus();
+
                 }
             });
-        }
-        else {
-            alert("两次输入密码不相同，请重新输入");
         }
     },
 
@@ -52,9 +58,9 @@ const Header = React.createClass({
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
                 <ReactRouter.Link to="/login">
-                <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
-                    </ReactRouter.Link>
-               <li className="col-xs-4 text-center">注册</li>
+                    <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
+                </ReactRouter.Link>
+                <li className="col-xs-4 text-center">注册</li>
             </ul>
         </div>
     }
@@ -73,7 +79,7 @@ const RegisterArea = React.createClass({
         return <div id="form-4" className="design">
             <form>
                 <p className="col-xs-offset-1 col-xs-10">
-                    <input type="text" name="username" placeholder="用户名"/>
+                    <input type="text" name="username" placeholder="用户名" autoFocus="true"/>
                 </p>
                 <p className="col-xs-offset-1 col-xs-10">
                     <input type="password" name='password' placeholder="密码"/>
