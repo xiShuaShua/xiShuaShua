@@ -8,7 +8,7 @@ const Home = React.createClass({
   toggle: function () {
     if(this.state.flag === 0) {
       $('#personal').css({color: '#3547A2'});
-      $('#sideBar').animate({left:"0"},'slow');
+      $('#sideBar').animate({left: "0"},'slow');
       this.setState({flag: 1});
     }else {
       $('#personal').css({color: '#ffffff'});
