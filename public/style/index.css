@@ -119,6 +119,29 @@
     right: 50%;
     margin-right: -44px;
 }
+.my-side-bar {
+    position: absolute;
+    bottom: 0;
+    left: -170px;
+    padding-top: 35px;
+    padding-left: 15px;
+    z-index: 1;
+}
+.my-nav-padding {
+    padding: 0 15px;
+}
+.my-logo-padding {
+    padding-left: 15px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+.my-sidebar-bottom {
+    position: absolute;
+    bottom: 20px;
+}
+.my-setting-padding {
+    padding-left: 30px;
+}
 
 .body {
     background-color: #f6f6f6;
