@@ -1,6 +1,6 @@
 'use strict';
 
-const BestSuccess = React.createClass({
+const ReserveBest = React.createClass({
 
     render: function () {
         const myDate = new Date();
@@ -40,4 +40,4 @@ const BestSuccess = React.createClass({
     }
 });
 
-export default BestSuccess
+export default ReserveBest;

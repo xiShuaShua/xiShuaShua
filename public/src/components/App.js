@@ -1,4 +1,7 @@
-import React, {Component} from "react"
+'use strict';
+
+import React, {Component} from "react";
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -20,9 +23,9 @@ class App extends Component {
         })
     }
 
-    getBestTime(time){
+    getBestTime(time) {
         this.setState({
-            bestTime:time
+            bestTime: time
         })
     }
 

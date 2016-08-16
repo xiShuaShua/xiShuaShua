@@ -1,10 +1,11 @@
-var MongoClient = require('mongodb').MongoClient;
-var DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
+'use strict';
 
-var deleteData = function (db, callback) {
-    var collection = db.collection('room');
+const MongoClient = require('mongodb').MongoClient;
+const DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
 
-    var deleteStr = {"_id": 2};
+const deleteData = function (db, callback) {
+    const collection = db.collection('rooms');
+    const deleteStr = {"_id": 2};
 
     collection.remove(deleteStr, function (err, result) {
         if (err) {

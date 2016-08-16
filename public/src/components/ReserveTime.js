@@ -1,4 +1,6 @@
-const Second = React.createClass({
+'use strict';
+
+const ReserveTime = React.createClass({
 
     getInitialState: function () {
         return {
@@ -12,7 +14,7 @@ const Second = React.createClass({
     },
 
     componentDidMount: function () {
-        $.get('/selectRooms', (result)=> {
+        $.get('/rooms', (result)=> {
 
             this.setState({room: result});
         })
@@ -21,8 +23,7 @@ const Second = React.createClass({
     render: function () {
         return <div>
             <Header id={this.state.id}/>
-            <Middle/>
-            <List elements={this.state.room} onGetTime={this.getTime} id={this.state.id}/>
+            <TimeList elements={this.state.room} onGetTime={this.getTime} id={this.state.id}/>
         </div>
     }
 });
@@ -41,22 +42,12 @@ const Header = React.createClass({
     }
 });
 
-const Middle = React.createClass({
-
-    render: function () {
-        return <div className="row middle my-write">
-            <h4 className="col-xs-6 text-center">时间段</h4>
-            <h4 className="col-xs-6 text-center">状态</h4>
-        </div>
-    }
-});
-
-const List = React.createClass({
+const TimeList = React.createClass({
 
     update: function (element, item) {
         this.props.onGetTime(item.time);
         const index = element.room.indexOf(item);
-        $.post('/updateRoom', ({element, item, index}));
+        $.post('/rooms', ({element, item, index}));
     },
 
     render: function () {
@@ -64,6 +55,10 @@ const List = React.createClass({
         const myTime = myDate.getHours();
 
         return <div>
+            <div className="row middle my-write">
+                <h4 className="col-xs-6 text-center">时间段</h4>
+                <h4 className="col-xs-6 text-center">状态</h4>
+            </div>
             {this.props.elements.map(element => {
                 if (element._id === this.props.id) {
                     return element.room.map(item => {
@@ -89,4 +84,4 @@ const List = React.createClass({
     }
 });
 
-export default Second;
+export default ReserveTime;

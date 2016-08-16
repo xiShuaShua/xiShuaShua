@@ -1,7 +1,10 @@
+'use strict';
+
 const MongoClient = require('mongodb').MongoClient;
 const DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
+
 const updateData = function (db, element, item, index, callback) {
-    const collection = db.collection('room');
+    const collection = db.collection('rooms');
     const whereStr = {"_id": parseInt(element._id)};
 
     element.room.map(temp=> {
@@ -25,7 +28,6 @@ const updateData = function (db, element, item, index, callback) {
                 callback(result);
             });
         }
-        return;
     })
 };
 exports.update = function (req, res) {

@@ -1,13 +1,15 @@
-const Menu = React.createClass({
+'use strict';
+
+const PersonalCenter = React.createClass({
     render: function () {
         return <div>
-            <Title />
-            <Room />
+            <Header />
+            <FunctionList />
         </div>
     }
 });
 
-const Title = React.createClass({
+const Header = React.createClass({
     render: function () {
         return <div className="row btn-info my-bg">
             <ul className="nav">
@@ -18,7 +20,7 @@ const Title = React.createClass({
         </div>
     }
 });
-const Room = React.createClass({
+const FunctionList = React.createClass({
     render:function () {
         return<div className="mobile">
             <div className="menu">
@@ -41,4 +43,4 @@ const Room = React.createClass({
     }
 });
 
-export default Menu;
+export default PersonalCenter;

@@ -1,14 +1,17 @@
+'use strict';
+
 const MongoClient = require('mongodb').MongoClient;
 const DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
 
 const updateData = function (db, userName, newPassword, callback) {
-    const collection = db.collection('user');
+    const collection = db.collection('users');
     const whereStr = {"name": userName};
     const updateStr = {
         $set: {
             "password": newPassword,
         }
     };
+
     collection.updateMany(whereStr, updateStr, {safe: true}, function (err, result) {
         if (err) {
             console.log('Error' + err);

@@ -1,4 +1,7 @@
-const Forget = React.createClass({
+'use strict';
+
+const ForgetPassword = React.createClass({
+
     render: function () {
         return <div>
             <Title />
@@ -27,7 +30,7 @@ const Bottom = React.createClass({
         const newPassword = $("input[name=password-sure]").val();
 
         if(prePassword === newPassword){
-            $.post('/updateUser',{name:userName,password:newPassword},function (result) {
+            $.post('/users',{name:userName,password:newPassword},function (result) {
             });
             alert("恭喜！密码修改成功！");
             $("input[name=password-sure]").val('');
@@ -62,4 +65,4 @@ const Bottom = React.createClass({
         </div>
     }
 });
-export default Forget;
+export default ForgetPassword;

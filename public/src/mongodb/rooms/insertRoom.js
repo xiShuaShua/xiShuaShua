@@ -1,8 +1,10 @@
-var MongoClient = require('mongodb').MongoClient;
-var DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
+'use strict';
 
-var insertData = function (db, data, callback) {
-    var collection = db.collection('room');
+const MongoClient = require('mongodb').MongoClient;
+const DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
+
+const insertData = function (db, data, callback) {
+    const collection = db.collection('rooms');
 
     collection.insert(data, function (err, result) {
         if (err) {
@@ -15,8 +17,7 @@ var insertData = function (db, data, callback) {
 
 exports.save = function (req, res) {
     MongoClient.connect(DB_CONN_STR, function (err, db) {
-        let data = req.body;
-        console.log(req.body);
+        const data = req.body;
 
         insertData(db, data, function (result) {
             db.close();

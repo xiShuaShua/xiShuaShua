@@ -1,14 +1,14 @@
 import Login from "./components/Login";
-import First from "./components/Firstpage";
-import Second from "./components/Secondpage";
-import Best from "./components/Best";
+import First from "./components/ReserveRoom";
+import Second from "./components/ReserveTime";
+import Best from "./components/RecommendReserveSuccess";
 import Register from "./components/Register";
 import App from "./components/App";
 import Forget from "./components/Forget";
 import Home from "./components/Home";
-import Success from "./components/Success";
+import Success from "./components/SelfReserveSuccess";
 import Menu from "./components/PersonalCenter";
-import BestSuccess from "./components/BestSuccess";
+import BestSuccess from "./components/ReserveBest";
 
 ReactDOM.render(
     <ReactRouter.Router>
@@ -23,7 +23,7 @@ ReactDOM.render(
             <ReactRouter.Route path="/register" component={Register}/>
             <ReactRouter.Route path="/forget" component={Forget}/>
             <ReactRouter.Route path="/success" component={Success}/>
-            <ReactRouter.Route path="/bestsuccess" component={BestSuccess}/>
+            <ReactRouter.Route path="/bestSuccess" component={BestSuccess}/>
         </ReactRouter.Route>
 
     </ReactRouter.Router>

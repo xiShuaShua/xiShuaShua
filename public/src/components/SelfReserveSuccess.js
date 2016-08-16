@@ -1,6 +1,6 @@
 'use strict';
 
-const Success = React.createClass({
+const SelfReserve = React.createClass({
 
     render: function () {
 
@@ -41,4 +41,4 @@ const Success = React.createClass({
     }
 });
 
-export default Success
+export default SelfReserve;

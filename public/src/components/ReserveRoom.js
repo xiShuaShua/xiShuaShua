@@ -1,31 +1,34 @@
 'use strict';
 
-const First = React.createClass({
+const ReserveRoom = React.createClass({
 
     getInitialState: function () {
         return {
             rooms: [],
         }
     },
+
     getID: function (id) {
         this.props.onGetId(id);
     },
+
     componentDidMount: function () {
-        $.get('/selectRooms', (result)=> {
+        $.get('/rooms', (result)=> {
             this.setState({
                 rooms: result,
             });
         })
     },
+
     render: function () {
         return <div>
-            <Nav/>
-            <List rooms={this.state.rooms} getId={this.getID}/>
+            <Header/>
+            <RoomsList rooms={this.state.rooms} getId={this.getID}/>
         </div>;
     }
 });
 
-const Nav = React.createClass({
+const Header = React.createClass({
     render: function () {
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
@@ -39,18 +42,22 @@ const Nav = React.createClass({
     }
 });
 
-const List = React.createClass({
+const RoomsList = React.createClass({
+
     getInitialState: function () {
         return {
             myDate: ''
         }
     },
+
     componentDidMount: function () {
         this.setState({myDate: new Date().getHours()})
     },
+
     toggle: function (id) {
         this.props.getId(id);
     },
+
     render: function () {
         const data = this.props.rooms;
         return <div className="row">
@@ -78,4 +85,4 @@ const List = React.createClass({
     }
 });
 
-export default First;
+export default ReserveRoom;

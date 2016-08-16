@@ -1,9 +1,6 @@
-const SighUp = React.createClass({
-    // getInitialState: function () {
-    //     return {
-    //         user: []
-    //     }
-    // },
+'use strict';
+
+const Register = React.createClass({
 
     target: function () {
         let username = $("input[name=username]").val();
@@ -22,11 +19,17 @@ const SighUp = React.createClass({
             $.post('/selectUser',{"name":username},(data)=>{
                 if(data.length === 0){
                     $.post('/insertUser', {name: username, password},(data)=>{
-                        alert("注册成功")
                     });
+                    alert("注册成功");
+                    $("input[name=username]").val('');
+                    $("input[name=password]").val('');
+                    $("input[name=password-sure]").val('');
                 }
                 else{
                     alert('该用户已存在，请重新输入')
+                    $("input[name=username]").val('');
+                    $("input[name=password]").val('');
+                    $("input[name=password-sure]").val('');
                 }
             });
         }
@@ -37,14 +40,14 @@ const SighUp = React.createClass({
 
     render: function () {
         return <div>
-            <Title/>
-            <Top/>
-            <Bottom target={this.target}/>
+            <Header/>
+            <Image/>
+            <RegisterArea target={this.target}/>
         </div>
     }
 });
 
-const Title = React.createClass({
+const Header = React.createClass({
     render: function () {
         return <div className="row my-nav my-bg my-white-color">
             <ul className="nav">
@@ -57,15 +60,15 @@ const Title = React.createClass({
     }
 });
 
-const Top = React.createClass({
+const Image = React.createClass({
     render: function () {
         return <div className="image">
-            <img src="src/img/images6.jpg"/>
+            <img src="src/img/register.jpg"/>
         </div>
     }
 });
 
-const Bottom = React.createClass({
+const RegisterArea = React.createClass({
     render: function () {
         return <div id="form-4" className="design">
             <form>
@@ -85,4 +88,5 @@ const Bottom = React.createClass({
         </div>
     }
 });
-export default SighUp;
+
+export default Register;
