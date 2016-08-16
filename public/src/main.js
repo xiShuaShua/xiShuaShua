@@ -1,13 +1,13 @@
 import Login from "./components/Login";
-import First from "./components/First-page";
-import Second from "./components/Second-page";
+import First from "./components/Firstpage";
+import Second from "./components/Secondpage";
 import Best from "./components/Best";
 import Register from "./components/Register";
 import App from "./components/App";
 import Forget from "./components/Forget";
 import Home from "./components/Home";
 import Success from "./components/Success";
-import Menu from "./components/privateCenter";
+import Menu from "./components/PersonalCenter";
 import BestSuccess from "./components/BestSuccess";
 
 ReactDOM.render(
