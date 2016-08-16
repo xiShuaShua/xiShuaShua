@@ -26,6 +26,13 @@ const RecommendRoom = React.createClass({
         this.props.getId(id);
     },
 
+    calc: function(rooms) {
+        const emptyRooms = rooms.filter((room) => room.room.any((time) => time.state === '0'));
+        console.log(emptyRooms);
+        const bestRecommendRooms = [];
+        return bestRecommendRooms;
+    },
+
     getBestTime: function (time) {
         console.log(time);
         this.props.getBestTime(time);
@@ -33,6 +40,7 @@ const RecommendRoom = React.createClass({
 
     toggle: function (result) {
         const rooms = result;
+        this.calc(rooms);
         const myDate = new Date();
         const myTime = myDate.getHours();
 
