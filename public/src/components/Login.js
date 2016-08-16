@@ -62,7 +62,7 @@ const Body = React.createClass({
 
 const Top = React.createClass({
     render: function () {
-        return <div>
+        return <div className="image">
             <img src="src/img/7.jpg"/>
         </div>
     }

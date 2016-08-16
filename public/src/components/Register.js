@@ -51,7 +51,7 @@ const Title = React.createClass({
                 <ReactRouter.Link to="/login">
                 <li className="col-xs-4"><span className="glyphicon glyphicon-circle-arrow-left">返回</span></li>
                     </ReactRouter.Link>
-                <li className="col-xs-4 text-center">注册</li>
+               <li className="col-xs-4 text-center">注册</li>
             </ul>
         </div>
     }
@@ -59,7 +59,7 @@ const Title = React.createClass({
 
 const Top = React.createClass({
     render: function () {
-        return <div className="text-center">
+        return <div className="image">
             <img src="src/img/images6.jpg"/>
         </div>
     }
@@ -79,7 +79,7 @@ const Bottom = React.createClass({
                     <input type="password" name='password-sure' placeholder="确认密码"/>
                 </p>
             </form>
-            <p className="col-xs-offset-3 col-xs-5">
+            <p className="text-center">
                 <button className="btn btn-primary" onClick={this.props.target}>注册</button>
             </p>
         </div>

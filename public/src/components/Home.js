@@ -11,7 +11,6 @@ const Home = React.createClass({
             <Top />
             <Body />
         </div>
-
     }
 });
 
