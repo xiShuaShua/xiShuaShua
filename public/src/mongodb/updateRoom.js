@@ -1,8 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 const DB_CONN_STR = 'mongodb://localhost:27017/xiShuaShua';
 const updateData = function (db, element, item, index, callback) {
-    const collection = db.collection('room');
-    const whereStr = {"_id": parseInt(element._id)};
+const collection = db.collection('room');
+const whereStr = {"_id": parseInt(element._id)};
 
     element.room.map(temp=> {
         if (temp.time === item.time) {
