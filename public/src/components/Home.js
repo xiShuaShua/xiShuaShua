@@ -21,7 +21,7 @@ const Home = React.createClass({
         const clientHeight = $(window).height() - 50;
         const sideBar = {
             height: clientHeight,
-            width: '185',
+            width: 185,
             backgroundColor: '#000',
             zIndex: 1
         };
@@ -49,9 +49,9 @@ const Home = React.createClass({
                             className="glyphicon glyphicon-pencil my-logo-padding my-white-color"></span>用户注册
                         </li>
                     </ReactRouter.Link>
-                    <li><span className="glyphicon glyphicon-heart-empty my-logo-padding"></span>个性装扮</li>
-                    <li><span className="glyphicon glyphicon-bookmark my-logo-padding"></span>激活会员</li>
-                    <li><span className="glyphicon glyphicon-usd my-logo-padding"></span>会员充值</li>
+                    <li><span className="glyphicon glyphicon-heart-empty my-logo-padding"> </span>个性装扮</li>
+                    <li><span className="glyphicon glyphicon-bookmark my-logo-padding"> </span>激活会员</li>
+                    <li><span className="glyphicon glyphicon-usd my-logo-padding"> </span>会员充值</li>
                 </ul>
                 <div className="row my-sidebar-bottom">
                     <div className="col-xs-6"><span className="my-setting-padding">设置</span></div>
