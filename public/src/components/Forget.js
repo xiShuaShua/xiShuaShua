@@ -30,9 +30,13 @@ const Bottom = React.createClass({
             $.post('/updateUser',{name:userName,password:newPassword},function (result) {
             });
             alert("恭喜！密码修改成功！");
+            $("input[name=password-sure]").val('');
+            $("input[name=password]").val('');
+            $("input[name=username]").val('');
         }else{
             alert("两次输入不一致，请重新输入！");
             $("input[name=password-sure]").val('');
+            $("input[name=password]").val('');
         }
     },
 
