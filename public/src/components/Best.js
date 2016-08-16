@@ -32,7 +32,6 @@ const Best = React.createClass({
             });
         }
 
-        const canRecommends = this.state.canRecommends;
         this.state.canRecommends.map(canRecommend=> {
             this.state.recommendTimes.push(parseInt(canRecommend.time.split(":")[0]));
             this.setState({recommendTimes: this.state.recommendTimes});
@@ -43,7 +42,10 @@ const Best = React.createClass({
         for (let i = this.state.recommendTimes.length - 1; i > 0; i--) {
             if (this.state.recommendTimes[i] < this.state.recommendTimes[i - 1]) {
                 this.state.recommendTimes[i - 1] = this.state.recommendTimes[i];
+                this.setState({recommendTimes: this.state.recommendTimes});
                 this.state.recommendRooms[i - 1] = this.state.recommendRooms[i];
+                this.setState({recommendRooms: this.state.recommendRooms})
+
             }
         }
     },
