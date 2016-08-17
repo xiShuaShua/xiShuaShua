@@ -5,7 +5,6 @@ const Home = React.createClass({
         return {
           isClicked: true,
             imageArray:["home2.png","home3.png","home4.png","home5.png"]
-
         }
     },
 
