@@ -2,9 +2,7 @@
 const Best = React.createClass({
     getInitialState: function () {
         return {
-            canRecommends: [],
-            recommendRooms: [],
-            recommendTimes: [],
+            recommends:[],
         }
     },
 
@@ -21,42 +19,36 @@ const Best = React.createClass({
         const myDate = new Date();
         const myTime = myDate.getHours();
 
-        for (let i = 0; i < rooms.length; i++) {
-            let tag = 0;
-            rooms[i].room.map((item, index)=> {
+        const emptyRooms = rooms.filter((room) => room.room.some((time) => time.state === '0'));
 
-                if (item.state === "0" && tag === 0 && myTime < parseInt(item.time.split(":")[0])) {
-                    this.state.canRecommends.push({id: rooms[i]._id, time: item.time});
-                    this.setState({canRecommends: this.state.canRecommends})
-                    tag = 1;
-                }
-            });
-        }
+        const canRecommends = emptyRooms.map((room) => {
+            return {
+                id: room._id,
+                time: room.room.find(tp => tp.state === '0'&&parseInt(tp.time.split(":")[0])>myTime).time,
+            }
 
-        this.state.canRecommends.map(canRecommend=> {
-            this.state.recommendTimes.push(parseInt(canRecommend.time.split(":")[0]));
-            this.setState({recommendTimes: this.state.recommendTimes});
-            this.state.recommendRooms.push(canRecommend.id);
-            this.setState({recommendRooms: this.state.recommendRooms})
         });
 
-        for (let i = this.state.recommendTimes.length - 1; i > 0; i--) {
+        for(let type of canRecommends){
+            type.time = parseInt(type.time.split(':'));
 
-            if (this.state.recommendTimes[i] < this.state.recommendTimes[i - 1]) {
-                this.state.recommendTimes[i - 1] = this.state.recommendTimes[i];
-                this.setState({recommendTimes: this.state.recommendTimes});
-                this.state.recommendRooms[i - 1] = this.state.recommendRooms[i];
-                this.setState({recommendRooms: this.state.recommendRooms})
+        }
+
+        for (let i=canRecommends.length-1;i>0;i--){
+            if (canRecommends[i].time<canRecommends[i-1].time){
+                canRecommends[i-1]=canRecommends[i];
             }
         }
+
+        this.setState({recommends:canRecommends})
     },
 
     render: function () {
         return <div>
             <Header/>
-            <Room room={this.state.recommendRooms[0] }/>
-            <Time time={this.state.recommendTimes[0]}/>
-            <Button tag={this.state.recommendTimes[0]}/>
+            <Room room={this.state.recommends[0]!=undefined?this.state.recommends[0].id:"" }/>
+            <Time time={this.state.recommends[0]!=undefined?this.state.recommends[0].time:""}/>
+            <Button isRecommend={this.state.recommends[0]!=undefined?this.state.recommends[0].id:""}/>
         </div>
     }
 });
@@ -111,7 +103,7 @@ const Button = React.createClass({
     render: function () {
         return <div className="col-md-6 ">
             <center>
-                <div className={this.props.tag ? "" : "hidden"}>
+                <div className={this.props.isRecommend ? "" : "hidden"}>
                     <ReactRouter.Link to="/success">
                         <button className="btn hu-button btn-lg  btn-info">预约</button>
                     </ReactRouter.Link>
