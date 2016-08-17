@@ -9,6 +9,7 @@ class App extends Component {
             id: 0,
             time: '',
             bestId:0,
+            bestTime:'',
         }
     }
 
@@ -42,9 +43,12 @@ class App extends Component {
                 {this.props.children && React.cloneElement(this.props.children, {
                     id: this.state.id,
                     time: this.state.time,
+                    bestId:this.state.bestId,
+                    bestTime:this.state.bestTime,
                     onGetId: this.getId.bind(this),
                     onGetTime: this.getTime.bind(this),
                     onGetBestId:this.getBestId.bind(this),
+                    onGetBestTime:this.getBestTime.bind(this),
 
                 })}
             </div>
