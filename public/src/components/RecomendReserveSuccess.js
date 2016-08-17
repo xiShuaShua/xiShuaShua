@@ -1,13 +1,14 @@
 'use strict';
 
-const ReserveBest = React.createClass({
+const SelfReserve = React.createClass({
 
     render: function () {
+
         const myDate = new Date();
         const hour = myDate.getHours();
         const minutes = myDate.getMinutes();
         const time = this.props.bestTime;
-        const gapTime = (minutes === 0) ? time[0] - hour : time[0] - (hour + 1);
+        const gapTime = (minutes === 60) ? time - hour : time - (hour + 1);
 
         return <div>
             <div className="row my-nav my-bg my-white-color">
@@ -27,7 +28,7 @@ const ReserveBest = React.createClass({
             </div>
             <div>
                 <div className="text-center time">
-                    <span>您预定的房间号为{this.props.id}号房</span>
+                    <span>您预定的房间号为{this.props.bestId}号房</span>
                 </div>
                 <div className="text-center time">
                     <span>距您开始洗澡还有{gapTime}小时{60 - minutes}分钟</span>
@@ -40,4 +41,4 @@ const ReserveBest = React.createClass({
     }
 });
 
-export default ReserveBest;
+export default SelfReserve;

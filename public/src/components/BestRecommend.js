@@ -2,7 +2,7 @@
 const Best = React.createClass({
     getInitialState: function () {
         return {
-            recommends:[],
+            recommends: [],
         }
     },
 
@@ -14,41 +14,48 @@ const Best = React.createClass({
         }
     },
 
+
+
+    getId:function (id) {
+        console.log(id+'222');
+        this.props.onGetBestId(id);
+    },
+
     toggle: function (result) {
         const rooms = result;
         const myDate = new Date();
         const myTime = myDate.getHours();
-
         const emptyRooms = rooms.filter((room) => room.room.some((time) => time.state === '0'));
 
         const canRecommends = emptyRooms.map((room) => {
             return {
                 id: room._id,
-                time: room.room.find(tp => tp.state === '0'&&parseInt(tp.time.split(":")[0])>myTime).time,
+                time: room.room.find(tp => tp.state === '0' && parseInt(tp.time.split(":")[0]) > myTime).time,
             }
 
         });
 
-        for(let type of canRecommends){
+        for (let type of canRecommends) {
             type.time = parseInt(type.time.split(':'));
 
         }
 
-        for (let i=canRecommends.length-1;i>0;i--){
-            if (canRecommends[i].time<canRecommends[i-1].time){
-                canRecommends[i-1]=canRecommends[i];
+        for (let i = canRecommends.length - 1; i > 0; i--) {
+            if (canRecommends[i].time < canRecommends[i - 1].time) {
+                canRecommends[i - 1] = canRecommends[i];
             }
         }
 
-        this.setState({recommends:canRecommends})
+        this.setState({recommends: canRecommends})
     },
 
     render: function () {
         return <div>
             <Header/>
-            <Room room={this.state.recommends[0]!=undefined?this.state.recommends[0].id:"" }/>
-            <Time time={this.state.recommends[0]!=undefined?this.state.recommends[0].time:""}/>
-            <Button isRecommend={this.state.recommends[0]!=undefined?this.state.recommends[0].id:""}/>
+            <Room room={this.state.recommends[0] != undefined ? this.state.recommends[0].id : "" }/>
+            <Time time={this.state.recommends[0] != undefined ? this.state.recommends[0].time : ""}/>
+            <Button isRecommend={this.state.recommends[0] != undefined ? this.state.recommends[0].id : ""}
+                    onGetId ={this.getId} id={this.state.recommends[0].id}/>
         </div>
     }
 });
@@ -100,12 +107,18 @@ const Time = React.createClass({
 });
 
 const Button = React.createClass({
+    toggle:function () {
+      const id = this.props.id;
+        console.log(id);
+        this.props.onGetId(id);
+    },
+
     render: function () {
         return <div className="col-md-6 ">
             <center>
                 <div className={this.props.isRecommend ? "" : "hidden"}>
                     <ReactRouter.Link to="/success">
-                        <button className="btn hu-button btn-lg  btn-info">预约</button>
+                        <button className="btn hu-button btn-lg  btn-info" onClick={this.toggle}>预约</button>
                     </ReactRouter.Link>
                 </div>
             </center>
