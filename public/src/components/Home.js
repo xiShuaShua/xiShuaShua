@@ -1,7 +1,6 @@
 'use strict';
 
 const Home = React.createClass({
-
     getInitialState: function () {
         return {
           isClicked: true,
