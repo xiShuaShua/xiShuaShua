@@ -4,7 +4,9 @@ const Home = React.createClass({
 
     getInitialState: function () {
         return {
-          isClicked: true
+          isClicked: true,
+            imageArray:["home2.png","home3.png","home4.png","home5.png"]
+
         }
     },
 
@@ -38,7 +40,7 @@ const Home = React.createClass({
               <li className="col-xs-4 text-right"><span className="glyphicon glyphicon-heart">收藏</span></li>
             </ul>
           </div>
-          <Carousel/>
+          <Carousel onChange={this.state.imageArray}/>
           <FunctionBlock/>
           <div style={sideBar} className="row my-side-bar" id="sideBar">
             <ul className="nav text-left">
@@ -68,27 +70,18 @@ const Carousel = React.createClass({
                 <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="3"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="4"></li>
-
             </ol>
-
             <div className="carousel-inner" role="listbox">
                 <div className="item active img-rounded">
-                    <div className="my-yellow my-img"><img src="src/img/home1.png" alt="..."/></div>
+                    <div className="my-img"><img src= {"src/img/home1.png"} alt="..."/></div>
                 </div>
-                <div className="item img-rounded">
-                    <div className="my-green my-img"><img src="src/img/home2.png"/></div>
-                </div>
-                <div className="item img-rounded">
-                    <div className="my-red my-img"><img src="src/img/home3.png" alt="..."/></div>
-                </div>
-                <div className="item img-rounded">
-                    <div className="my-pink my-img"><img src="src/img/home4.png" alt="..."/></div>
-                </div>
-                <div className="item img-rounded">
-                    <div className="my-blue-green my-img"><img src="src/img/home5.png" alt="..."/></div>
-                </div>
+                {this.props.onChange.map((image, index)=>{
+                    const path= "src/img/";
+                    return <div className="item img-rounded" key={index}>
+                        <div className="my-img"><img src= {path+image} alt="..."/></div>
+                    </div>
+                })}
             </div>
-
             <a className="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                 <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"> </span>
                 <span className="sr-only">Previous</span>
@@ -99,61 +92,55 @@ const Carousel = React.createClass({
             </a>
         </div>
     }
+
 });
 
 const FunctionBlock = React.createClass({
+
     render: function () {
         return <div className="row text-center">
             <div className="row">
-                <ReactRouter.Link to="/first">
-                    <div className="col-xs-6 my-table">
-                        <div className="my-server my-blue center-block my-left">
-                            <span className="glyphicon glyphicon-tree-deciduous my-white-color"> </span>
-                        </div>
-                        <div className="my-text-left">自助洗浴</div>
-                    </div>
-                </ReactRouter.Link>
-                <ReactRouter.Link to="/best">
-                    <div className="col-xs-6 my-table">
-                        <div className="my-server my-green center-block my-right">
-                            <span className="glyphicon glyphicon-transfer my-white-color"> </span>
-                        </div>
-                        <div className="my-text-right">最佳推荐</div>
-                    </div>
-                </ReactRouter.Link>
-            </div>
-            <div className="row">
-                <div className="col-xs-6 my-table">
-                    <div className="my-server my-red center-block my-left">
-                        <div className="glyphicon glyphicon-earphone my-white-color"></div>
-                    </div>
-                    <div className="my-text-left">客服热线</div>
-                </div>
-                <div className="col-xs-6 my-table">
-                    <div className="my-server my-purple center-block my-right">
-                        <span
-                            className="glyphicon glyphicon-phone-alt glyphicon glyphicon-tower my-white-color"> </span>
-                    </div>
-                    <div className="my-text-right">众包服务</div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-xs-6 my-table">
-                    <div className="my-server my-blue-green center-block my-left">
-                        <span className="glyphicon glyphicon-gift my-white-color"> </span>
-                    </div>
-                    <div className="my-text-left">洗澡套餐</div>
-                </div>
-                <div className="col-xs-6 my-table">
-                    <div className="my-server my-gray center-block my-right">
-                        <span className="glyphicon glyphicon-option-horizontal my-white-color"> </span>
-                    </div>
-                    <div className="my-text-right">更多服务</div>
-                </div>
+                <Function routerLink="/first" className="glyphicon glyphicon-tree-deciduous my-white-color"
+                          divLocation="my-blue my-left" textLocation="my-text-left" text="自助洗浴"/>
+                <Function routerLink="/best" className="glyphicon glyphicon-transfer my-white-color"
+                          divLocation="my-green my-right" textLocation="my-text-right" text="最佳推荐"/>
+                <Function routerLink="" className="glyphicon glyphicon-earphone my-white-color"
+                          divLocation="my-red my-left" textLocation="my-text-left" text="客服热线"/>
+                <Function routerLink="" className="glyphicon glyphicon-phone-alt glyphicon glyphicon-tower my-white-color"
+                          divLocation="my-purple my-right" textLocation="my-text-right" text="洗澡套餐"/>
+                <Function routerLink="" className="glyphicon glyphicon-gift my-white-color"
+                          divLocation="my-blue-green my-left" textLocation="my-text-left" text="众包服务"/>
+                <Function routerLink="" className="glyphicon glyphicon-option-horizontal my-white-color"
+                          divLocation="my-gray my-right" textLocation="my-text-right" text="更多服务"/>
             </div>
         </div>
     }
 });
+
+const Function = React.createClass({
+
+    getInitialState:function () {
+        return{
+            className:'',
+            routerLink:'',
+            text:'',
+            divLocation:'',
+            textLocation:''
+        }
+    },
+    render:function(){
+        const divClassName = "my-server center-block ";
+        return <ReactRouter.Link to={this.props.routerLink}>
+            <div className="col-xs-6 my-table">
+                <div className = {divClassName + this.props.divLocation}>
+                    <span className={this.props.className}> </span>
+                </div>
+                <div className={this.props.textLocation}>{this.props.text}</div>
+            </div>
+        </ReactRouter.Link>
+    }
+});
+
 
 const Sidebar = React.createClass({
   getInitialState: function () {
@@ -178,6 +165,5 @@ const Sidebar = React.createClass({
     </ReactRouter.Link>
   }
 });
-
 
 export default Home;

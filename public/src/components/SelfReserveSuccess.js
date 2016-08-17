@@ -8,7 +8,7 @@ const SelfReserve = React.createClass({
         const hour = myDate.getHours();
         const minutes = myDate.getMinutes();
         const time = this.props.time.split(':');
-        const gapTime = (minutes === 0) ? time[0] - hour : time[0] - (hour + 1);
+        const gapTime = (minutes === 60) ? time[0] - hour : time[0] - (hour + 1);
 
         return <div>
             <div className="row my-nav my-bg my-white-color">

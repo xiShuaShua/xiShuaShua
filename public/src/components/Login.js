@@ -92,7 +92,7 @@ const LoginArea = React.createClass({
                 <ReactRouter.Link to={this.props.isSame ? '/home' : ''}>
                     <input type="submit" value="登录" onClick={this.props.toggle}/>
                 </ReactRouter.Link>
-            </div>
+            </div>`
             <br/>
             <br/>
             <div className="design">
