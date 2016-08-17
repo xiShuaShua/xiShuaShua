@@ -14,10 +14,13 @@ const Best = React.createClass({
         }
     },
 
+    getTime:function (time) {
+      this.props.onGetBestTime(time);
+        console.log(time);
+    },
 
 
     getId:function (id) {
-        console.log(id+'222');
         this.props.onGetBestId(id);
     },
 
@@ -55,7 +58,8 @@ const Best = React.createClass({
             <Room room={this.state.recommends[0] != undefined ? this.state.recommends[0].id : "" }/>
             <Time time={this.state.recommends[0] != undefined ? this.state.recommends[0].time : ""}/>
             <Button isRecommend={this.state.recommends[0] != undefined ? this.state.recommends[0].id : ""}
-                    onGetId ={this.getId} id={this.state.recommends[0].id}/>
+                    onGetId ={this.getId} id={this.state.recommends[0] && this.state.recommends[0].id}
+                    onGetTime={this.getTime} time={this.state.recommends[0] && this.state.recommends[0].time}/>
         </div>
     }
 });
@@ -109,15 +113,16 @@ const Time = React.createClass({
 const Button = React.createClass({
     toggle:function () {
       const id = this.props.id;
-        console.log(id);
+        const time = this.props.time;
         this.props.onGetId(id);
+        this.props.onGetTime(time);
     },
 
     render: function () {
         return <div className="col-md-6 ">
             <center>
                 <div className={this.props.isRecommend ? "" : "hidden"}>
-                    <ReactRouter.Link to="/success">
+                    <ReactRouter.Link to="/bestSuccess">
                         <button className="btn hu-button btn-lg  btn-info" onClick={this.toggle}>预约</button>
                     </ReactRouter.Link>
                 </div>
