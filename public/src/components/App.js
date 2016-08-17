@@ -7,13 +7,20 @@ class App extends Component {
         super(props);
         this.state = {
             id: 0,
-            time: ''
+            time: '',
+            bestId:0,
         }
     }
 
     getId(id) {
         this.setState({
             id: id
+        })
+    }
+
+    getBestId(id){
+        this.setState({
+            bestId:id
         })
     }
 
@@ -36,7 +43,9 @@ class App extends Component {
                     id: this.state.id,
                     time: this.state.time,
                     onGetId: this.getId.bind(this),
-                    onGetTime: this.getTime.bind(this)
+                    onGetTime: this.getTime.bind(this),
+                    onGetBestId:this.getBestId.bind(this),
+
                 })}
             </div>
         )
