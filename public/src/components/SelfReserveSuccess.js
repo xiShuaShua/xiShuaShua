@@ -23,7 +23,7 @@ const SelfReserve = React.createClass({
             </div>
             <div className="success row">
                 <div className=" send col-xs-4 text-right glyphicon glyphicon-tint"></div>
-                <h3 className="col-xs-4 text-center">预约成功</h3>
+                <h4 className="col-xs-4 text-center">预约成功</h4>
                 <div className=" send col-xs-4 text-left glyphicon glyphicon-tint"></div>
             </div>
             <div>
