@@ -89,13 +89,15 @@ const LoginArea = React.createClass({
                 <input type="password" placeholder="密码" name="password" id="password"/>
             </div>
             <div className="col-xs-offset-3">
-                <ReactRouter.Link to={this.props.isSame ? '/home' : ''}>
+                <ReactRouter.Link to={this.props.isSame ? '/home' : '/login'}>
                     <input type="submit" value="登录" onClick={this.props.toggle}/>
                 </ReactRouter.Link>
             </div>`
             <br/>
             <br/>
-            <div className="design">
+            <br/>
+            <br/>
+            <div>
                 <ReactRouter.Link to="forget">
                     <a href="#">忘记密码</a>
                 </ReactRouter.Link>
